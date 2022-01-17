@@ -1,0 +1,140 @@
+<!doctype html><html lang=en><head>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<style>:root{--accent-color:#00dd42}</style>
+<title>Worst First Build - Homelab Operational!</title>
+<meta name=description content="Hello! I’m Anthony Wang, a programming, math, and science enthusiast!">
+<meta name=keywords content="Hardware,Linux">
+<meta property="og:url" content="https://ta180m.github.io/posts/worst-first-build-6/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Worst First Build - Homelab Operational!">
+<meta property="og:description" content="Hello! I’m Anthony Wang, a programming, math, and science enthusiast!">
+<meta property="og:image" content="/dodecahedra/render-small.gif">
+<meta name=twitter:card content="summary_large_image">
+<meta name=twitter:title content="Worst First Build - Homelab Operational!">
+<meta name=twitter:description content="Hello! I’m Anthony Wang, a programming, math, and science enthusiast!">
+<meta property="twitter:domain" content="https://ta180m.github.io/posts/worst-first-build-6/">
+<meta property="twitter:url" content="https://ta180m.github.io/posts/worst-first-build-6/">
+<meta name=twitter:image content="/dodecahedra/render-small.gif">
+<link rel=canonical href=https://ta180m.github.io/posts/worst-first-build-6/>
+<link rel=stylesheet type=text/css href=/css/normalize.min.css media=print onload="this.media='all'">
+<link rel=stylesheet type=text/css href=/css/main.css>
+<link disabled id=dark-theme rel=stylesheet href=/css/dark.css>
+<script src=/js/svg-injector.min.js></script>
+<script src=/js/feather-icons.min.js></script>
+<script src=/js/main.js></script>
+</head>
+<body>
+<script type=text/javascript>setThemeByUserPref()</script><header class=header>
+<nav class=header-nav>
+<div class=avatar>
+<a href=https://ta180m.github.io/>
+<img src=/dodecahedra/render-small.gif alt=avatar>
+</a>
+</div>
+<div class=nav-title>
+<a class=nav-brand href=https://ta180m.github.io/>Some Random Website</a>
+</div>
+<div class=nav-links>
+<div class=nav-link>
+<a href=/about/><span data-feather=aperture></span> About </a>
+</div>
+<div class=nav-link>
+<a href=/projects/><span data-feather=package></span> Projects </a>
+</div>
+<div class=nav-link>
+<a href=/posts/><span data-feather=book></span> Posts </a>
+</div>
+<div class=nav-link>
+<a href=/tags/><span data-feather=tag></span> Tags </a>
+</div>
+<div class=nav-link>
+<a href=/index.xml><span data-feather=rss></span> Feed </a>
+</div>
+<div class=nav-link>
+<a href=https://git.exozy.me/Ta180m/website><span data-feather=git-pull-request></span> Git </a>
+</div>
+<span class=nav-icons-divider></span>
+<div class="nav-link dark-theme-toggle">
+<a>
+<span id=theme-toggle-icon data-feather=moon></span>
+</a>
+</div>
+<div class=nav-link id=hamburger-menu-toggle>
+<a>
+<span data-feather=menu></span>
+</a>
+</div>
+<ul class="nav-hamburger-list visibility-hidden">
+<li class=nav-item>
+<a href=/about/><span data-feather=aperture></span> About </a>
+</li>
+<li class=nav-item>
+<a href=/projects/><span data-feather=package></span> Projects </a>
+</li>
+<li class=nav-item>
+<a href=/posts/><span data-feather=book></span> Posts </a>
+</li>
+<li class=nav-item>
+<a href=/tags/><span data-feather=tag></span> Tags </a>
+</li>
+<li class=nav-item>
+<a href=/index.xml><span data-feather=rss></span> Feed </a>
+</li>
+<li class=nav-item>
+<a href=https://git.exozy.me/Ta180m/website><span data-feather=git-pull-request></span> Git </a>
+</li>
+<li class="nav-item dark-theme-toggle">
+<a>
+<span id=theme-toggle-icon data-feather=moon></span>
+</a>
+</li>
+</ul>
+</div>
+</nav>
+</header>
+<main id=content>
+<div class="post container">
+<div class=post-header-section>
+<h1>Worst First Build - Homelab Operational!</h1>
+<small role=doc-subtitle></small>
+<p class=post-date>
+March 31, 2021
+</p>
+<ul class=post-tags>
+<li class=post-tag><a href=/tags/hardware>Hardware</a></li>
+<li class=post-tag><a href=/tags/linux>Linux</a></li>
+</ul>
+</div>
+<div class=post-content>
+<p>
+<p><em>Originally posted on my <a href=https://git.exozy.me/Ta180m/blog/src/branch/main/_posts/2021-03-31-worst-first-build-part-6.md>old blog</a></em></p>
+<p>Over the past week, I&rsquo;ve been getting my new build set up. It&rsquo;s been quite satisfying: I&rsquo;ll run into more than my fair share of issues, but problem solving for the win!</p>
+<p>The OS installation went relatively smoothly. Partitioning disks was a bit tricky but I got it to work. I wanted to try out <code>systemd-networkd</code> and <code>systemd-boot</code> for my new server, and I had to spend some time researching documentation. One of them worked perfectly, the other one not so much, so I ended up sticking with the tried-and-true NetworkManager. I also got SSH and VNC working as well, so I was off to great start.</p>
+<p>My first major headache was XMP. To but it simply, enabling XMP always caused me to fail to boot, so something was definitely wrong. I tried various voltages and frequencies, at the highest I could get it to go was 3533MHz, just 66MHz below my RAM&rsquo;s rated speed.</p>
+<p>After coming through online forums and dozens of Reddit posts, I finally found a solution. An anonymous Redditer suggested changing VDD_SOC to 1.00 V to someone with a similar solution, so I gave it a try. Bingo! It worked and my RAM crushed the <a href=https://openbenchmarking.org/test/pts/ramspeed>RAMspeed</a> benchmark.</p>
+<p>Next! My next challenge was to set up Nextcloud. Fortunately, ArchWiki has a <a href=https://wiki.archlinux.org/index.php/Nextcloud>nice guide</a>, updated and refactored for Nextcloud 21 and there are some other <a href=https://thepenguin.eu/2018-06-17-how-to-set-up-your-own-cloud-using-nextcloud-on-archlinux/>good ones</a> out there, so that went surprisingly smoothly as well. I also had to obtain a domain for my server, but the <a href=https://education.github.com/pack>GitHub Education Developer Pack</a> came to the rescue! The most difficult part was probably SSL certificates since I&rsquo;ll never done it before, but it worked out in the end. <code>certbot</code> for the win!</p>
+<p>Anyways, my biggest challenges still lied ahead. Matrix.</p>
+<p><a href=matrix.org/>Matrix</a> is a great protocol. There&rsquo;s a nice <a href=matrix.org/>public homeserver</a> that you can try and get your friends to sign up for. But still, it&rsquo;s public and owned by someone else. Plus, you can&rsquo;t run some bridges with it. So, that left me with the seemingly easy task of setting up my own homeserver.</p>
+<p>Way easier said than done. Installing the reference homeserver, Synapse, is straight up hellish. The ArchWiki was marginally helpful. The official documentation was too terse. It didn&rsquo;t make my life easier that I wanted to configure <a href=https://github.com/matrix-org/synapse/blob/develop/docs/delegate.md>delegation</a> to run my homeserver on a subdomain but show as running on the main domain, but I finally found a <a href=https://ajl.io/matrix-synapse-server-setup-guide/>guide</a> that would help me do it.</p>
+<p>It took&mldr; a while. I ran into numerous problems, ranging from forgetting to <code>cd</code> into <code>/var/lib/synapse</code> for the homeserver installation to having SSL certificate problems that I finally fixed by issuing one for all my subdomains. Phew. I still had one big challenge still remaining.</p>
+<p>The [https://en.wikipedia.org/wiki/Network_effect](network effect) sucks. All my friends use Discord. Fortunately, I had picked Matrix partly due to its strong bridge support. I tried giving <a href=https://github.com/matrix-discord/mx-puppet-discord>mx-puppet-discord</a> a shot and it worked perfectly!</p>
+<p>However, there&rsquo;s also a package for it in the <a href=https://aur.archlinux.org/packages/mx-puppet-discord-git/>AUR</a> that comes with some extra goodies such as a systemd service. What comes next? Well, I&rsquo;ll quote my post on the AUR exactly:</p>
+<blockquote>
+<p>For some reason, after editing <code>/etc/mx-puppet-discord/config.yaml</code>, when I run <code>node /usr/lib/node_modules/mx-puppet-discord/build/index.js -c /etc/mx-puppet-discord/config.yaml -r -f /root/registration.yaml</code> as root, the command never stops running. Checking my active processes, it doesn&rsquo;t even seem like node is doing anything. The same thing happens with <code>node /usr/lib/node_modules/mx-puppet-discord/build/index.js -h</code> which should print the help message. Does anyone know why this is happening? Perhaps something is wrong with my node installation?</p>
+<p>EDIT: I generated a <code>registration.yaml</code> using the instructions in the GitHub repository, and now when I try to start <code>mx-puppet-discord.service</code>, I get the error <code>Failed at step NAMESPACE spawning</code>.</p>
+<p>EDIT 2: I finally got the original GitHub repository to work. I don&rsquo;t know what&rsquo;s wrong with this package though.</p>
+<p>EDIT 3: I figured out how to fix the <code>systemd</code> error: Turns out you need to manually create the <code>/var/lib/mx-puppet-discord</code> directory.</p>
+<p>EDIT 4: Finally got a working setup! I first cloned the repo directly from GitHub, configured it, transferred ownership to the <code>mx-puppet-discord</code> user and reused the systemd service. Now it works perfectly!</p>
+<p>EDIT 5: Synapse wasn&rsquo;t starting up fast enough on boot for <code>mx-puppet-discord</code>, so I had to add <code>ExecStartPre=sleep 5</code> to the service file for it to work after a reboot.</p>
+</blockquote>
+<p>So there you go. That&rsquo;s how you set up mx-puppet-discord, after hours of problem solving.</p>
+<p>I also set up Gitea to mirror my GitHub repositories, but nothing notable happened with that.</p>
+</p>
+</div>
+</div>
+</main><footer class=footer>
+<span>Made with ❤️ by Ta180m - CC BY-SA 4.0</span>
+</footer>
+</body>
+</html>

@@ -1,0 +1,127 @@
+<!doctype html><html lang=en><head>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<style>:root{--accent-color:#00dd42}</style>
+<title>Redesigning My Website</title>
+<meta name=description content="I finally finished redesigning my website using Hugo">
+<meta name=keywords content="website,web">
+<meta property="og:url" content="https://ta180m.github.io/posts/redesigning-my-website/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Redesigning My Website">
+<meta property="og:description" content="I finally finished redesigning my website using Hugo">
+<meta property="og:image" content="/dodecahedra/render-small.gif">
+<meta name=twitter:card content="summary_large_image">
+<meta name=twitter:title content="Redesigning My Website">
+<meta name=twitter:description content="I finally finished redesigning my website using Hugo">
+<meta property="twitter:domain" content="https://ta180m.github.io/posts/redesigning-my-website/">
+<meta property="twitter:url" content="https://ta180m.github.io/posts/redesigning-my-website/">
+<meta name=twitter:image content="/dodecahedra/render-small.gif">
+<link rel=canonical href=https://ta180m.github.io/posts/redesigning-my-website/>
+<link rel=stylesheet type=text/css href=/css/normalize.min.css media=print onload="this.media='all'">
+<link rel=stylesheet type=text/css href=/css/main.css>
+<link disabled id=dark-theme rel=stylesheet href=/css/dark.css>
+<script src=/js/svg-injector.min.js></script>
+<script src=/js/feather-icons.min.js></script>
+<script src=/js/main.js></script>
+</head>
+<body>
+<script type=text/javascript>setThemeByUserPref()</script><header class=header>
+<nav class=header-nav>
+<div class=avatar>
+<a href=https://ta180m.github.io/>
+<img src=/dodecahedra/render-small.gif alt=avatar>
+</a>
+</div>
+<div class=nav-title>
+<a class=nav-brand href=https://ta180m.github.io/>Some Random Website</a>
+</div>
+<div class=nav-links>
+<div class=nav-link>
+<a href=/about/><span data-feather=aperture></span> About </a>
+</div>
+<div class=nav-link>
+<a href=/projects/><span data-feather=package></span> Projects </a>
+</div>
+<div class=nav-link>
+<a href=/posts/><span data-feather=book></span> Posts </a>
+</div>
+<div class=nav-link>
+<a href=/tags/><span data-feather=tag></span> Tags </a>
+</div>
+<div class=nav-link>
+<a href=/index.xml><span data-feather=rss></span> Feed </a>
+</div>
+<div class=nav-link>
+<a href=https://git.exozy.me/Ta180m/website><span data-feather=git-pull-request></span> Git </a>
+</div>
+<span class=nav-icons-divider></span>
+<div class="nav-link dark-theme-toggle">
+<a>
+<span id=theme-toggle-icon data-feather=moon></span>
+</a>
+</div>
+<div class=nav-link id=hamburger-menu-toggle>
+<a>
+<span data-feather=menu></span>
+</a>
+</div>
+<ul class="nav-hamburger-list visibility-hidden">
+<li class=nav-item>
+<a href=/about/><span data-feather=aperture></span> About </a>
+</li>
+<li class=nav-item>
+<a href=/projects/><span data-feather=package></span> Projects </a>
+</li>
+<li class=nav-item>
+<a href=/posts/><span data-feather=book></span> Posts </a>
+</li>
+<li class=nav-item>
+<a href=/tags/><span data-feather=tag></span> Tags </a>
+</li>
+<li class=nav-item>
+<a href=/index.xml><span data-feather=rss></span> Feed </a>
+</li>
+<li class=nav-item>
+<a href=https://git.exozy.me/Ta180m/website><span data-feather=git-pull-request></span> Git </a>
+</li>
+<li class="nav-item dark-theme-toggle">
+<a>
+<span id=theme-toggle-icon data-feather=moon></span>
+</a>
+</li>
+</ul>
+</div>
+</nav>
+</header>
+<main id=content>
+<div class="post container">
+<div class=post-header-section>
+<h1>Redesigning My Website</h1>
+<small role=doc-subtitle>I finally finished redesigning my website using Hugo</small>
+<p class=post-date>
+October 24, 2021
+</p>
+<ul class=post-tags>
+<li class=post-tag><a href=/tags/website>website</a></li>
+<li class=post-tag><a href=/tags/web>web</a></li>
+</ul>
+</div>
+<div class=post-content>
+<p>
+<p>My <a href=https://web.archive.org/web/20210813044159/https://ta180m.github.io/>old website</a> <a href=/posts/web-sucks>sucked</a>. Like, for real. It was a bit of hard-written HTML plus a Jekyll blog, and it was a huge pain to update and maintain. GitHub kept randomly emailing me about various security vulnerabilities in some Ruby dependency of Jekyll, and hard-written HTML can only get you so far before you rage-quit.</p>
+<p>So what now? Well, I did write a different site using the Hugo static site generator, <a href=https://exozy.me/howtuwu/>howtuwu</a>, and it turned out really nice. Hugo written in Go (of course) and compiled to a single binary, so no more worrying about Ruby dependencies! And writing in Markdown is a whole different level than HTML and actually kind of fun. No one ever said writing HTML is fun. So, why not rewrite my personal website in Hugo too?</p>
+<p>I started by searching for a <a href=https://themes.gohugo.io/>Hugo theme</a>. Almost by accident, I discovered the <a href=https://themes.gohugo.io/themes/gokarna/>Gokarna theme</a>, and I have to say, I absolutely love it. It has everything that I need: icons for my various accounts, tags that actually work, an RSS feed, and dark mode. With my <a href=https://github.com/Ta180m/gokarna>personal Gokarna fork</a>, it&rsquo;s perfect. I even managed to sneak in this from my old blog:</p>
+<blockquote>
+<p>404 &mldr; You&rsquo;ve reached an imaginary page!<br>
+Please <a href=https://old.reddit.com/r/learnmath/comments/s4rt0/why_does_multiplying_by_i_correspond_to_90_degree/>rotate your computer 90 degrees</a> and try again.</p>
+</blockquote>
+<p>Currently, the new site is deployed to GitHub pages using a <a href=https://gohugo.io/hosting-and-deployment/hosting-on-github/>GitHub Action</a>, while a development version (bleeding-edge not-yet-pushed Git commits!) is hosted on <a href=https://ta180m.exozy.me>exozyme</a>.</p>
+<p>This morning, I finally finished moving my old blog posts over to this new site. The difference between hard-written HTML and Jekyll is pretty big, but in my opinion, the difference between Jekyll and Hugo is even bigger. I finally have a slick website that&rsquo;s aesthetic, lightweight, and easy to maintain!</p>
+</p>
+</div>
+</div>
+</main><footer class=footer>
+<span>Made with ❤️ by Ta180m - CC BY-SA 4.0</span>
+</footer>
+</body>
+</html>

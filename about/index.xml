@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>About on Some Random Website</title><link>https://ta180m.github.io/about/</link><description>Recent content in About on Some Random Website</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><atom:link href="https://ta180m.github.io/about/index.xml" rel="self" type="application/rss+xml"/><item><title>Books I Like</title><link>https://ta180m.github.io/about/books/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://ta180m.github.io/about/books/</guid><description>Origami and Math - John Montroll: My favorite origami book.
+1984 - George Orwell: The book that Amazon erased from people&amp;rsquo;s Kindles&amp;hellip;
+What If? - Randall Munroe: The What If? blog but as a book.
+The Elements - Theodore Gray: Lovely periodic table book with large beautiful pictures.
+Lies My Teacher Told Me - James Loewen: Everything your history class got wrong.</description></item><item><title>Email</title><link>https://ta180m.github.io/about/email/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://ta180m.github.io/about/email/</guid><description>My email address is my usual username with the domain pm.me. If you can, please use PGP with my public key.</description></item><item><title>Games I Like</title><link>https://ta180m.github.io/about/games/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://ta180m.github.io/about/games/</guid><description>Top 10 Super Mario 64 (10/10): The game itself is phenomenal. But what makes this game a 10/10 is how the fan base has kept it alive and thriving over the years, whether it&amp;rsquo;s speedrunning the game by visiting parallel universes or mods that increase its awesomeness.
+Minecraft (9/10): The game that peaked in 2012 and gets worse with every new update. exozyme intermittently runs a server.</description></item><item><title>Programming</title><link>https://ta180m.github.io/about/programming/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://ta180m.github.io/about/programming/</guid><description>Check out my projects for major programming projects.
+Programming languages that I know:
+A lot: C++, Python
+Some: C, Java, Julia, HTML, CSS, JavaScript, SQL, Bash, Fish, LaTeX, SageMath, P4
+A little bit: Lisp, Lua, Haskell, Go, Rust, C#, PHP, Perl, R, Ruby</description></item><item><title>Random Quotes</title><link>https://ta180m.github.io/about/quotes/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://ta180m.github.io/about/quotes/</guid><description>&amp;ldquo;Perfection is achieved, not when there is nothing more to add, but when there is nothing left to take away.&amp;rdquo;
+- Antoine de Saint-Exupéry
+&amp;ldquo;With enough bugs, all eyes are shallow.&amp;rdquo;
+- John Tobey
+&amp;ldquo;I&amp;rsquo;m not young enough to know everything.&amp;rdquo;
+- J. M. Barrie
+&amp;ldquo;Multitasking is the enemy of focus.&amp;rdquo;
+- Anonymous
+&amp;ldquo;The early bird catches the worm, but the second mouse gets the cheese.&amp;rdquo;
+- Ernst Berg
+&amp;ldquo;In theory, theory and practice are the same.</description></item><item><title>Software I Use</title><link>https://ta180m.github.io/about/software/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://ta180m.github.io/about/software/</guid><description>Operating System: Arch Linux
+Desktop environment: KDE Plasma
+Shell: Fish
+Terminal: Konsole, Yakuake
+File manager: Dolphin
+Web browser: Firefox, Chromium
+Text editor: Kate, Vim, Code - OSS
+Office: Nextcloud, LibreOffice
+Mail client: Thunderbird
+Notes: Xournal++, Nextcloud Notes
+Chat: Element
+Cloud storage: Nextcloud Files
+Music: Jellyfin</description></item></channel></rss>

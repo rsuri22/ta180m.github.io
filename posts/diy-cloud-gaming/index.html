@@ -1,0 +1,128 @@
+<!doctype html><html lang=en><head>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<style>:root{--accent-color:#00dd42}</style>
+<title>DIY Cloud Gaming</title>
+<meta name=description content="Hello! I’m Anthony Wang, a programming, math, and science enthusiast!">
+<meta name=keywords content="Linux">
+<meta property="og:url" content="https://ta180m.github.io/posts/diy-cloud-gaming/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="DIY Cloud Gaming">
+<meta property="og:description" content="Hello! I’m Anthony Wang, a programming, math, and science enthusiast!">
+<meta property="og:image" content="/dodecahedra/render-small.gif">
+<meta name=twitter:card content="summary_large_image">
+<meta name=twitter:title content="DIY Cloud Gaming">
+<meta name=twitter:description content="Hello! I’m Anthony Wang, a programming, math, and science enthusiast!">
+<meta property="twitter:domain" content="https://ta180m.github.io/posts/diy-cloud-gaming/">
+<meta property="twitter:url" content="https://ta180m.github.io/posts/diy-cloud-gaming/">
+<meta name=twitter:image content="/dodecahedra/render-small.gif">
+<link rel=canonical href=https://ta180m.github.io/posts/diy-cloud-gaming/>
+<link rel=stylesheet type=text/css href=/css/normalize.min.css media=print onload="this.media='all'">
+<link rel=stylesheet type=text/css href=/css/main.css>
+<link disabled id=dark-theme rel=stylesheet href=/css/dark.css>
+<script src=/js/svg-injector.min.js></script>
+<script src=/js/feather-icons.min.js></script>
+<script src=/js/main.js></script>
+</head>
+<body>
+<script type=text/javascript>setThemeByUserPref()</script><header class=header>
+<nav class=header-nav>
+<div class=avatar>
+<a href=https://ta180m.github.io/>
+<img src=/dodecahedra/render-small.gif alt=avatar>
+</a>
+</div>
+<div class=nav-title>
+<a class=nav-brand href=https://ta180m.github.io/>Some Random Website</a>
+</div>
+<div class=nav-links>
+<div class=nav-link>
+<a href=/about/><span data-feather=aperture></span> About </a>
+</div>
+<div class=nav-link>
+<a href=/projects/><span data-feather=package></span> Projects </a>
+</div>
+<div class=nav-link>
+<a href=/posts/><span data-feather=book></span> Posts </a>
+</div>
+<div class=nav-link>
+<a href=/tags/><span data-feather=tag></span> Tags </a>
+</div>
+<div class=nav-link>
+<a href=/index.xml><span data-feather=rss></span> Feed </a>
+</div>
+<div class=nav-link>
+<a href=https://git.exozy.me/Ta180m/website><span data-feather=git-pull-request></span> Git </a>
+</div>
+<span class=nav-icons-divider></span>
+<div class="nav-link dark-theme-toggle">
+<a>
+<span id=theme-toggle-icon data-feather=moon></span>
+</a>
+</div>
+<div class=nav-link id=hamburger-menu-toggle>
+<a>
+<span data-feather=menu></span>
+</a>
+</div>
+<ul class="nav-hamburger-list visibility-hidden">
+<li class=nav-item>
+<a href=/about/><span data-feather=aperture></span> About </a>
+</li>
+<li class=nav-item>
+<a href=/projects/><span data-feather=package></span> Projects </a>
+</li>
+<li class=nav-item>
+<a href=/posts/><span data-feather=book></span> Posts </a>
+</li>
+<li class=nav-item>
+<a href=/tags/><span data-feather=tag></span> Tags </a>
+</li>
+<li class=nav-item>
+<a href=/index.xml><span data-feather=rss></span> Feed </a>
+</li>
+<li class=nav-item>
+<a href=https://git.exozy.me/Ta180m/website><span data-feather=git-pull-request></span> Git </a>
+</li>
+<li class="nav-item dark-theme-toggle">
+<a>
+<span id=theme-toggle-icon data-feather=moon></span>
+</a>
+</li>
+</ul>
+</div>
+</nav>
+</header>
+<main id=content>
+<div class="post container">
+<div class=post-header-section>
+<h1>DIY Cloud Gaming</h1>
+<small role=doc-subtitle></small>
+<p class=post-date>
+May 13, 2021
+</p>
+<ul class=post-tags>
+<li class=post-tag><a href=/tags/linux>Linux</a></li>
+</ul>
+</div>
+<div class=post-content>
+<p>
+<p><em>Originally posted on my <a href=https://git.exozy.me/Ta180m/blog/src/branch/main/_posts/2021-05-13-diy-cloud-gaming.md>old blog</a></em></p>
+<p>Cloud gaming sucks. Here&rsquo;s <a href=https://en.wikipedia.org/wiki/Cloud_gaming>Wikipedia&rsquo;s summary</a> of its many flaws:</p>
+<blockquote>
+<p>This approach provides several disadvantages, notably forcing the user to consistently maintain a high-speed internet connection to an external organization. This built-in barrier to entry not only locks out users who wish to play video games in areas without this internet connection, but also precludes the player from owning their personal copy of the software, and permanently locks the user into a rental agreement, tying the purchase of the game to the solvency of the streaming provider (if the company goes out of business, the game ceases to exist). It is also inherently wasteful, and has insurmountable lag built-in to the distribution model, forcing users to make connections to potentially geographically-distant servers for the sole purpose of sending command inputs and retrieving video and audio streams that are viewed once and then immediately discarded.</p>
+</blockquote>
+<p>But what&rsquo;s lesser known is that you don&rsquo;t need Geforce Now, Stadia, or Moonlight. It&rsquo;s actually possible—and pretty easy—to roll out your own DIY cloud gaming solution using only Linux and open-source apps. Alright, let&rsquo;s get started!</p>
+<p>First, let&rsquo;s figure out how we&rsquo;re going to do remote desktop. There&rsquo;s X forwarding, VNC, xrdp, X2Go, and more, but in my own experience, X forwarding works by far the best over a LAN. Gaming over the internet? None of these protocols are optimized well for low latency, so I guess just try all of them and see which one is best. I&rsquo;ve had some success with gaming using VNC from another location in the same city, but if your server is on the other side of the world, YMMV.</p>
+<p>Great, let&rsquo;s start up a game! The first thing you&rsquo;ll notice is that your performance is absolutely trash because you&rsquo;re probably using software rendering. However, <a href=https://wiki.archlinux.org/title/VirtualGL>VirtualGL</a> is here to the rescue! Now you can enjoy your near-normal FPS again with <code>vglconnect</code>, although you&rsquo;ll probably be limited by the FPS of your connection.</p>
+<p>OK, so where&rsquo;s the sound? Here&rsquo;s one of the few areas of PulseAudio really shines: you can <a href=https://wiki.archlinux.org/title/PulseAudio#Networked_audio>select the server to run the sound on</a>! After setup, just set the <code>PULSE_SERVER</code> environmental variable and you&rsquo;re all set! The latency is decent on a LAN but not so much over the internet. Whatever.</p>
+<p>We&rsquo;re getting pretty close now: all that&rsquo;s left is that I can&rsquo;t game with a keyboard; I need a controller! Fortunately, there&rsquo;s <a href=https://github.com/moslevin/netstick>netstick</a> to help us out! Putting everything together, we can now enjoy games running on a fast server on our laptops!</p>
+<p>The experience of gaming over a LAN is basically the same as running it directly on the client, which is great! However, if you want to compete with Geforce Now and Stadia and game over the internet, their specialized protocols are probably going to perform a lot better. YMMV.</p>
+</p>
+</div>
+</div>
+</main><footer class=footer>
+<span>Made with ❤️ by Ta180m - CC BY-SA 4.0</span>
+</footer>
+</body>
+</html>

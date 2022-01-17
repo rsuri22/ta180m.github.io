@@ -1,0 +1,132 @@
+<!doctype html><html lang=en><head>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<style>:root{--accent-color:#00dd42}</style>
+<title>Plasma 5.22 is a Disappointment</title>
+<meta name=description content="Hello! I’m Anthony Wang, a programming, math, and science enthusiast!">
+<meta name=keywords content="Linux,KDE,Rant">
+<meta property="og:url" content="https://ta180m.github.io/posts/plasma-5.22-disappointment/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Plasma 5.22 is a Disappointment">
+<meta property="og:description" content="Hello! I’m Anthony Wang, a programming, math, and science enthusiast!">
+<meta property="og:image" content="/dodecahedra/render-small.gif">
+<meta name=twitter:card content="summary_large_image">
+<meta name=twitter:title content="Plasma 5.22 is a Disappointment">
+<meta name=twitter:description content="Hello! I’m Anthony Wang, a programming, math, and science enthusiast!">
+<meta property="twitter:domain" content="https://ta180m.github.io/posts/plasma-5.22-disappointment/">
+<meta property="twitter:url" content="https://ta180m.github.io/posts/plasma-5.22-disappointment/">
+<meta name=twitter:image content="/dodecahedra/render-small.gif">
+<link rel=canonical href=https://ta180m.github.io/posts/plasma-5.22-disappointment/>
+<link rel=stylesheet type=text/css href=/css/normalize.min.css media=print onload="this.media='all'">
+<link rel=stylesheet type=text/css href=/css/main.css>
+<link disabled id=dark-theme rel=stylesheet href=/css/dark.css>
+<script src=/js/svg-injector.min.js></script>
+<script src=/js/feather-icons.min.js></script>
+<script src=/js/main.js></script>
+</head>
+<body>
+<script type=text/javascript>setThemeByUserPref()</script><header class=header>
+<nav class=header-nav>
+<div class=avatar>
+<a href=https://ta180m.github.io/>
+<img src=/dodecahedra/render-small.gif alt=avatar>
+</a>
+</div>
+<div class=nav-title>
+<a class=nav-brand href=https://ta180m.github.io/>Some Random Website</a>
+</div>
+<div class=nav-links>
+<div class=nav-link>
+<a href=/about/><span data-feather=aperture></span> About </a>
+</div>
+<div class=nav-link>
+<a href=/projects/><span data-feather=package></span> Projects </a>
+</div>
+<div class=nav-link>
+<a href=/posts/><span data-feather=book></span> Posts </a>
+</div>
+<div class=nav-link>
+<a href=/tags/><span data-feather=tag></span> Tags </a>
+</div>
+<div class=nav-link>
+<a href=/index.xml><span data-feather=rss></span> Feed </a>
+</div>
+<div class=nav-link>
+<a href=https://git.exozy.me/Ta180m/website><span data-feather=git-pull-request></span> Git </a>
+</div>
+<span class=nav-icons-divider></span>
+<div class="nav-link dark-theme-toggle">
+<a>
+<span id=theme-toggle-icon data-feather=moon></span>
+</a>
+</div>
+<div class=nav-link id=hamburger-menu-toggle>
+<a>
+<span data-feather=menu></span>
+</a>
+</div>
+<ul class="nav-hamburger-list visibility-hidden">
+<li class=nav-item>
+<a href=/about/><span data-feather=aperture></span> About </a>
+</li>
+<li class=nav-item>
+<a href=/projects/><span data-feather=package></span> Projects </a>
+</li>
+<li class=nav-item>
+<a href=/posts/><span data-feather=book></span> Posts </a>
+</li>
+<li class=nav-item>
+<a href=/tags/><span data-feather=tag></span> Tags </a>
+</li>
+<li class=nav-item>
+<a href=/index.xml><span data-feather=rss></span> Feed </a>
+</li>
+<li class=nav-item>
+<a href=https://git.exozy.me/Ta180m/website><span data-feather=git-pull-request></span> Git </a>
+</li>
+<li class="nav-item dark-theme-toggle">
+<a>
+<span id=theme-toggle-icon data-feather=moon></span>
+</a>
+</li>
+</ul>
+</div>
+</nav>
+</header>
+<main id=content>
+<div class="post container">
+<div class=post-header-section>
+<h1>Plasma 5.22 is a Disappointment</h1>
+<small role=doc-subtitle></small>
+<p class=post-date>
+June 8, 2021
+</p>
+<ul class=post-tags>
+<li class=post-tag><a href=/tags/linux>Linux</a></li>
+<li class=post-tag><a href=/tags/kde>KDE</a></li>
+<li class=post-tag><a href=/tags/rant>Rant</a></li>
+</ul>
+</div>
+<div class=post-content>
+<p>
+<p><em>Originally posted on my <a href=https://git.exozy.me/Ta180m/blog/src/branch/main/_posts/2021-06-08-plasma-5.22-disappointment.md>old blog</a></em></p>
+<p>The KDE Plasma update train has cycled back again to another major update, so I snatched Plasma 5.22 from the very scary <a href=https://wiki.archlinux.org/index.php/Official_repositories#Testing_repositories>testing repository</a>, took it for a spin, and it&rsquo;s&mldr; disappointing.</p>
+<p>What&rsquo;s the big new feature this time? Adaptive transparency, apparently.</p>
+<p>Adaptive what?</p>
+<p>Yeah, if you were expecting something big, another huge leap forward, this update was anything but that. If you think panel transparency is a big deal, think again.</p>
+<p>However, Plasma 5.22 did manage to shrink the clock on the panel, so it&rsquo;s now harder to read. Of course, the screenshot below still makes it seem big.</p>
+<p><img src=/images/clock.png alt="The clock shrunk!"></p>
+<p>Also, there was a &ldquo;Reboot to apply updates&rdquo; icon in the system tray after every boot that started showing up, but the following commands fixed it. Warning: it will reboot your computer.</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>sudo pkcon update -d
+sudo pkcon offline-trigger
+sudo systemctl start packagekit-offline-update
+</code></pre></div><p>Other minor annoyances include Yakuake flashing blue every time you close it. Definitely annoying, but not a serious issue.</p>
+<p>We did get another cool wallpaper though! So I guess it was a net benefit if you factor that in&mldr;</p>
+</p>
+</div>
+</div>
+</main><footer class=footer>
+<span>Made with ❤️ by Ta180m - CC BY-SA 4.0</span>
+</footer>
+</body>
+</html>

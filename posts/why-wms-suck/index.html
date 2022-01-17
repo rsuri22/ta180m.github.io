@@ -1,0 +1,129 @@
+<!doctype html><html lang=en><head>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<style>:root{--accent-color:#00dd42}</style>
+<title>Why WMs Suck</title>
+<meta name=description content="Hello! I’m Anthony Wang, a programming, math, and science enthusiast!">
+<meta name=keywords content="Linux,Rant">
+<meta property="og:url" content="https://ta180m.github.io/posts/why-wms-suck/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Why WMs Suck">
+<meta property="og:description" content="Hello! I’m Anthony Wang, a programming, math, and science enthusiast!">
+<meta property="og:image" content="/dodecahedra/render-small.gif">
+<meta name=twitter:card content="summary_large_image">
+<meta name=twitter:title content="Why WMs Suck">
+<meta name=twitter:description content="Hello! I’m Anthony Wang, a programming, math, and science enthusiast!">
+<meta property="twitter:domain" content="https://ta180m.github.io/posts/why-wms-suck/">
+<meta property="twitter:url" content="https://ta180m.github.io/posts/why-wms-suck/">
+<meta name=twitter:image content="/dodecahedra/render-small.gif">
+<link rel=canonical href=https://ta180m.github.io/posts/why-wms-suck/>
+<link rel=stylesheet type=text/css href=/css/normalize.min.css media=print onload="this.media='all'">
+<link rel=stylesheet type=text/css href=/css/main.css>
+<link disabled id=dark-theme rel=stylesheet href=/css/dark.css>
+<script src=/js/svg-injector.min.js></script>
+<script src=/js/feather-icons.min.js></script>
+<script src=/js/main.js></script>
+</head>
+<body>
+<script type=text/javascript>setThemeByUserPref()</script><header class=header>
+<nav class=header-nav>
+<div class=avatar>
+<a href=https://ta180m.github.io/>
+<img src=/dodecahedra/render-small.gif alt=avatar>
+</a>
+</div>
+<div class=nav-title>
+<a class=nav-brand href=https://ta180m.github.io/>Some Random Website</a>
+</div>
+<div class=nav-links>
+<div class=nav-link>
+<a href=/about/><span data-feather=aperture></span> About </a>
+</div>
+<div class=nav-link>
+<a href=/projects/><span data-feather=package></span> Projects </a>
+</div>
+<div class=nav-link>
+<a href=/posts/><span data-feather=book></span> Posts </a>
+</div>
+<div class=nav-link>
+<a href=/tags/><span data-feather=tag></span> Tags </a>
+</div>
+<div class=nav-link>
+<a href=/index.xml><span data-feather=rss></span> Feed </a>
+</div>
+<div class=nav-link>
+<a href=https://git.exozy.me/Ta180m/website><span data-feather=git-pull-request></span> Git </a>
+</div>
+<span class=nav-icons-divider></span>
+<div class="nav-link dark-theme-toggle">
+<a>
+<span id=theme-toggle-icon data-feather=moon></span>
+</a>
+</div>
+<div class=nav-link id=hamburger-menu-toggle>
+<a>
+<span data-feather=menu></span>
+</a>
+</div>
+<ul class="nav-hamburger-list visibility-hidden">
+<li class=nav-item>
+<a href=/about/><span data-feather=aperture></span> About </a>
+</li>
+<li class=nav-item>
+<a href=/projects/><span data-feather=package></span> Projects </a>
+</li>
+<li class=nav-item>
+<a href=/posts/><span data-feather=book></span> Posts </a>
+</li>
+<li class=nav-item>
+<a href=/tags/><span data-feather=tag></span> Tags </a>
+</li>
+<li class=nav-item>
+<a href=/index.xml><span data-feather=rss></span> Feed </a>
+</li>
+<li class=nav-item>
+<a href=https://git.exozy.me/Ta180m/website><span data-feather=git-pull-request></span> Git </a>
+</li>
+<li class="nav-item dark-theme-toggle">
+<a>
+<span id=theme-toggle-icon data-feather=moon></span>
+</a>
+</li>
+</ul>
+</div>
+</nav>
+</header>
+<main id=content>
+<div class="post container">
+<div class=post-header-section>
+<h1>Why WMs Suck</h1>
+<small role=doc-subtitle></small>
+<p class=post-date>
+December 26, 2020
+</p>
+<ul class=post-tags>
+<li class=post-tag><a href=/tags/linux>Linux</a></li>
+<li class=post-tag><a href=/tags/rant>Rant</a></li>
+</ul>
+</div>
+<div class=post-content>
+<p>
+<p><em>Originally posted on my <a href=https://git.exozy.me/Ta180m/blog/src/branch/main/_posts/2020-12-26-why-wms-suck.md>old blog</a></em></p>
+<p>WM fans, don&rsquo;t kill me for saying this, but window managers suck. To see why, let&rsquo;s examine the process of installing and configuring a WM.</p>
+<h2 id=installing-a-wm>Installing a WM</h2>
+<p>OK, I&rsquo;ll admit that this step is much faster. Most WMs are only a few megabytes and take a few seconds to install, even with slow package managers like <code>urpmi</code>. Try installing something like KDE Plasma on Mageia or even Arch. It&rsquo;s going to take a while. (Maybe go eat a snack while it&rsquo;s installing?).</p>
+<h2 id=configuring-a-wm>Configuring a WM</h2>
+<p>Now that you have your favorite WM installed, what next? If you&rsquo;re hardcore, you probably already have a repository with your dotfiles and configs all ready to go, but what about an un-configured WM? Well, it will probably be <em>functional</em> in terms of managing windows, but it probably requires a lot more work to get it to do anything useful. You&rsquo;ll be stuck editing config files for several hours to get something on the level of a desktop environment. All desktop environments ship with a settings app to modify essential settings such as monitors and such. Using a WM? Well, good luck with <code>xrandr</code>, although it&rsquo;s not <em>too</em> hard. Now what about screen scaling? Now you have to edit <code>.Xresources</code>! And what about adjusting the screen color to make it easier on your eyes? Oops, you&rsquo;ll need a separate program to do that! It&rsquo;s orders of magnitudes nicer to have all of these common tweaks in one place, in a DE.</p>
+<p>I&rsquo;m going to use the example of KDE Plasma some more, since it exemplifies a nice, well-rounded desktop environment. One of the key benefits of Plasma is its excellent integration with the KDE application suite. Sure, not every DE has a very complete set of applications, but it&rsquo;s loads better than anything you can do with a WM, in addition to a drastically lower amount of tedious work to set everything up.</p>
+<p>The most common criticism of desktop environments is that they are &ldquo;bloated&rdquo; and &ldquo;resource-hogging&rdquo;. And yes, I&rsquo;m going to have to concede this one to the WM fans, since window managers tend to be very spartan and minimalistic. I even use i3 sometimes when working with very intensive software, such as with the macOS VM. But every time I use i3, I&rsquo;m constantly reminded of the Plasma features that I take for granted: a consistent icon theme, screen scaling for my high DPI monitor so the text can actually be legible, adjusting the screen color, mouse scroll direction, Krunner, and much more. Never forget Krunner. The single most important KDE app. Too bad it&rsquo;s glitchy with i3. I did end up fixing some of those things, but it doesn&rsquo;t feel <em>right</em>. I could put in more time, but there&rsquo;s just something <em>missing</em> about i3. It&rsquo;s incomplete.</p>
+<p>If you go on Reddit or do a DuckDuckGo search, you&rsquo;ll find plenty of examples of beautiful, heavy-customized WM setups. The emphasis on heavy-customized. It takes hours and hours of work to create something like that! Sure, you can download their dotfiles and set it up on your own computer, but it still doesn&rsquo;t feel quite the same as using a mature, well-rounded DE like KDE Plasma. Desktop environments are designed to make your life easier, even if it doesn&rsquo;t feel like it sometimes. WMs are really for people who have too much time on their hands and <em>need</em> that ultimate customizability. For everyone else, stick with your desktop environment.</p>
+<h2 id=what-about-using-i3-with-plasmahttpsuserbasekdeorgtutorialsusing_other_window_managers_with_plasma>What about using <a href=https://userbase.kde.org/Tutorials/Using_Other_Window_Managers_with_Plasma>i3 with Plasma</a>?</h2>
+<p>Meh. Kwin is pretty good and does dazzling compositing effects. Too bad it can&rsquo;t tile.</p>
+</p>
+</div>
+</div>
+</main><footer class=footer>
+<span>Made with ❤️ by Ta180m - CC BY-SA 4.0</span>
+</footer>
+</body>
+</html>

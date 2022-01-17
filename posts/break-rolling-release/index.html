@@ -1,0 +1,145 @@
+<!doctype html><html lang=en><head>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<style>:root{--accent-color:#00dd42}</style>
+<title>How to Break a Rolling Release</title>
+<meta name=description content="Hello! I’m Anthony Wang, a programming, math, and science enthusiast!">
+<meta name=keywords content="Linux,KDE">
+<meta property="og:url" content="https://ta180m.github.io/posts/break-rolling-release/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="How to Break a Rolling Release">
+<meta property="og:description" content="Hello! I’m Anthony Wang, a programming, math, and science enthusiast!">
+<meta property="og:image" content="/dodecahedra/render-small.gif">
+<meta name=twitter:card content="summary_large_image">
+<meta name=twitter:title content="How to Break a Rolling Release">
+<meta name=twitter:description content="Hello! I’m Anthony Wang, a programming, math, and science enthusiast!">
+<meta property="twitter:domain" content="https://ta180m.github.io/posts/break-rolling-release/">
+<meta property="twitter:url" content="https://ta180m.github.io/posts/break-rolling-release/">
+<meta name=twitter:image content="/dodecahedra/render-small.gif">
+<link rel=canonical href=https://ta180m.github.io/posts/break-rolling-release/>
+<link rel=stylesheet type=text/css href=/css/normalize.min.css media=print onload="this.media='all'">
+<link rel=stylesheet type=text/css href=/css/main.css>
+<link disabled id=dark-theme rel=stylesheet href=/css/dark.css>
+<script src=/js/svg-injector.min.js></script>
+<script src=/js/feather-icons.min.js></script>
+<script src=/js/main.js></script>
+</head>
+<body>
+<script type=text/javascript>setThemeByUserPref()</script><header class=header>
+<nav class=header-nav>
+<div class=avatar>
+<a href=https://ta180m.github.io/>
+<img src=/dodecahedra/render-small.gif alt=avatar>
+</a>
+</div>
+<div class=nav-title>
+<a class=nav-brand href=https://ta180m.github.io/>Some Random Website</a>
+</div>
+<div class=nav-links>
+<div class=nav-link>
+<a href=/about/><span data-feather=aperture></span> About </a>
+</div>
+<div class=nav-link>
+<a href=/projects/><span data-feather=package></span> Projects </a>
+</div>
+<div class=nav-link>
+<a href=/posts/><span data-feather=book></span> Posts </a>
+</div>
+<div class=nav-link>
+<a href=/tags/><span data-feather=tag></span> Tags </a>
+</div>
+<div class=nav-link>
+<a href=/index.xml><span data-feather=rss></span> Feed </a>
+</div>
+<div class=nav-link>
+<a href=https://git.exozy.me/Ta180m/website><span data-feather=git-pull-request></span> Git </a>
+</div>
+<span class=nav-icons-divider></span>
+<div class="nav-link dark-theme-toggle">
+<a>
+<span id=theme-toggle-icon data-feather=moon></span>
+</a>
+</div>
+<div class=nav-link id=hamburger-menu-toggle>
+<a>
+<span data-feather=menu></span>
+</a>
+</div>
+<ul class="nav-hamburger-list visibility-hidden">
+<li class=nav-item>
+<a href=/about/><span data-feather=aperture></span> About </a>
+</li>
+<li class=nav-item>
+<a href=/projects/><span data-feather=package></span> Projects </a>
+</li>
+<li class=nav-item>
+<a href=/posts/><span data-feather=book></span> Posts </a>
+</li>
+<li class=nav-item>
+<a href=/tags/><span data-feather=tag></span> Tags </a>
+</li>
+<li class=nav-item>
+<a href=/index.xml><span data-feather=rss></span> Feed </a>
+</li>
+<li class=nav-item>
+<a href=https://git.exozy.me/Ta180m/website><span data-feather=git-pull-request></span> Git </a>
+</li>
+<li class="nav-item dark-theme-toggle">
+<a>
+<span id=theme-toggle-icon data-feather=moon></span>
+</a>
+</li>
+</ul>
+</div>
+</nav>
+</header>
+<main id=content>
+<div class="post container">
+<div class=post-header-section>
+<h1>How to Break a Rolling Release</h1>
+<small role=doc-subtitle></small>
+<p class=post-date>
+February 16, 2021
+</p>
+<ul class=post-tags>
+<li class=post-tag><a href=/tags/linux>Linux</a></li>
+<li class=post-tag><a href=/tags/kde>KDE</a></li>
+</ul>
+</div>
+<div class=post-content>
+<p>
+<p><em>Originally posted on my <a href=https://git.exozy.me/Ta180m/blog/src/branch/main/_posts/2021-02-16-break-rolling-release.md>old blog</a></em></p>
+<p>It&rsquo;s the day! Plasma 5.21 is out!</p>
+<p>First, let me flex my <code>neofetch</code> to answer all your burning questions about my OS:</p>
+<p><img src=/images/neofetch.png alt=neofetch></p>
+<p>Now, time for the update. The big one. The closest thing to a point update in a rolling release. And&mldr;</p>
+<p><img src=/images/yay.png alt=yay></p>
+<p>Lots of updates, but Plasma 5.21 is not one of them.</p>
+<p>Digging a bit deeper, it looks like it&rsquo;s still in <a href=https://wiki.archlinux.org/index.php/Official_repositories#Testing_repositories>testing</a>. Looks like we need to enable it first. Hopefully my computer doesn&rsquo;t explode or something when I do this&mldr;</p>
+<p><img src=/images/yay-testing.png alt="yay with testing"></p>
+<p>There we go! Looks like Linux 5.11 is part of this sweet deal too! Let&rsquo;s break our rolling release! I mean, what could go possibly wrong? It&rsquo;s <em>only</em> 1263.42 MiB of packages. And I don&rsquo;t have a backup ready. Great!</p>
+<p>A few minutes and a reboot later&mldr;</p>
+<p>OK, the boot looks good, no black screens or anything. Plasma (looks like the X11 session got renamed from Plasma to Plasma X11) on X started up extra fast&mldr; and we&rsquo;re in!</p>
+<p><img src=/images/plasma-5.21.png alt="Plasma 5.21"></p>
+<p>Some first impressions: The new Breeze Twilight theme looks awesome! I love hybrid light-dark themes! The application launcher is also organized a lot better now.</p>
+<p><img src=/images/system-monitor.png alt="The new system monitor"></p>
+<p>The system monitor app looks pretty good too and seems infinitely customizable, although wasn&rsquo;t the old Ksysguard working just fine? Whatever.</p>
+<p><img src=/images/firewall.png alt="The firewall configuration settings"></p>
+<p>Now for the new firewall configuration settings&mldr; looks like I need to install a firewall first! A few minutes later&mldr; what a nice place to insert a giant picture of Konqi! Moving on.</p>
+<p>The settings app has generally been cleaned up some more. There&rsquo;s a few other new settings, such as software updates, where I can now enable automatic updates to break my rolling release! How nice!</p>
+<p><img src=/images/plasma-5.21-app-launcher.png alt="New Application Launcher"></p>
+<p>The biggest disappointment is the new Application Launcher. While I think it is a bit better organized, it&rsquo;s also less keyboard-friendly. Previously, after doing a search, you could press the down key once to select the second option shown. Now, you need to press the down key <em>twice</em>, injecting extra keystrokes in an area where keystroke efficiency is key (no pun intended).</p>
+<p>Now for some Wayland&mldr;</p>
+<p><img src=/images/plasma-5.21-wayland.png alt="Plasma 5.21 Wayland"></p>
+<p>Of course. The screen scaling is all wacko when I try to scale apps up 1.5x. Native Wayland apps look perfectly fine, but everything else, including much of Plasma, still looks pretty bad. Apparently it&rsquo;s a result of <a href="https://bugs.kde.org/show_bug.cgi?id=389191">this bug</a> and it looks like two years later, it still hasn&rsquo;t been resolved yet.</p>
+<p><img src=/images/plasma-crash.png alt="Plasma crash"></p>
+<p>And finally, we got a crash! Hooray! Just like last time I tried Wayland. Looks like the next update will be the one where Wayland is finally usable?</p>
+<p>The only disappointment that I have about Plasma 5.21 and this latest update is that nothing broke! Well, Wayland had some crashes, but it&rsquo;s always been kind of broken, so I&rsquo;m stuck on X11 for now. There were 1263.42 MiB of packages that could have broken in this update, <em>and</em> I enabled the testing repository, but they didn&rsquo;t! How could they? How dare they actually respect my time so I don&rsquo;t have to waste an hour fixing my rolling release! So tragic.</p>
+</p>
+</div>
+</div>
+</main><footer class=footer>
+<span>Made with ❤️ by Ta180m - CC BY-SA 4.0</span>
+</footer>
+</body>
+</html>

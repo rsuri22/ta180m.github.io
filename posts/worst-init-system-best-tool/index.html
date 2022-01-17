@@ -1,0 +1,193 @@
+<!doctype html><html lang=en><head>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<style>:root{--accent-color:#00dd42}</style>
+<title>The Worst Init System's Best Tool</title>
+<meta name=description content="Hello! I’m Anthony Wang, a programming, math, and science enthusiast!">
+<meta name=keywords content="Linux">
+<meta property="og:url" content="https://ta180m.github.io/posts/worst-init-system-best-tool/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="The Worst Init System's Best Tool">
+<meta property="og:description" content="Hello! I’m Anthony Wang, a programming, math, and science enthusiast!">
+<meta property="og:image" content="/dodecahedra/render-small.gif">
+<meta name=twitter:card content="summary_large_image">
+<meta name=twitter:title content="The Worst Init System's Best Tool">
+<meta name=twitter:description content="Hello! I’m Anthony Wang, a programming, math, and science enthusiast!">
+<meta property="twitter:domain" content="https://ta180m.github.io/posts/worst-init-system-best-tool/">
+<meta property="twitter:url" content="https://ta180m.github.io/posts/worst-init-system-best-tool/">
+<meta name=twitter:image content="/dodecahedra/render-small.gif">
+<link rel=canonical href=https://ta180m.github.io/posts/worst-init-system-best-tool/>
+<link rel=stylesheet type=text/css href=/css/normalize.min.css media=print onload="this.media='all'">
+<link rel=stylesheet type=text/css href=/css/main.css>
+<link disabled id=dark-theme rel=stylesheet href=/css/dark.css>
+<script src=/js/svg-injector.min.js></script>
+<script src=/js/feather-icons.min.js></script>
+<script src=/js/main.js></script>
+</head>
+<body>
+<script type=text/javascript>setThemeByUserPref()</script><header class=header>
+<nav class=header-nav>
+<div class=avatar>
+<a href=https://ta180m.github.io/>
+<img src=/dodecahedra/render-small.gif alt=avatar>
+</a>
+</div>
+<div class=nav-title>
+<a class=nav-brand href=https://ta180m.github.io/>Some Random Website</a>
+</div>
+<div class=nav-links>
+<div class=nav-link>
+<a href=/about/><span data-feather=aperture></span> About </a>
+</div>
+<div class=nav-link>
+<a href=/projects/><span data-feather=package></span> Projects </a>
+</div>
+<div class=nav-link>
+<a href=/posts/><span data-feather=book></span> Posts </a>
+</div>
+<div class=nav-link>
+<a href=/tags/><span data-feather=tag></span> Tags </a>
+</div>
+<div class=nav-link>
+<a href=/index.xml><span data-feather=rss></span> Feed </a>
+</div>
+<div class=nav-link>
+<a href=https://git.exozy.me/Ta180m/website><span data-feather=git-pull-request></span> Git </a>
+</div>
+<span class=nav-icons-divider></span>
+<div class="nav-link dark-theme-toggle">
+<a>
+<span id=theme-toggle-icon data-feather=moon></span>
+</a>
+</div>
+<div class=nav-link id=hamburger-menu-toggle>
+<a>
+<span data-feather=menu></span>
+</a>
+</div>
+<ul class="nav-hamburger-list visibility-hidden">
+<li class=nav-item>
+<a href=/about/><span data-feather=aperture></span> About </a>
+</li>
+<li class=nav-item>
+<a href=/projects/><span data-feather=package></span> Projects </a>
+</li>
+<li class=nav-item>
+<a href=/posts/><span data-feather=book></span> Posts </a>
+</li>
+<li class=nav-item>
+<a href=/tags/><span data-feather=tag></span> Tags </a>
+</li>
+<li class=nav-item>
+<a href=/index.xml><span data-feather=rss></span> Feed </a>
+</li>
+<li class=nav-item>
+<a href=https://git.exozy.me/Ta180m/website><span data-feather=git-pull-request></span> Git </a>
+</li>
+<li class="nav-item dark-theme-toggle">
+<a>
+<span id=theme-toggle-icon data-feather=moon></span>
+</a>
+</li>
+</ul>
+</div>
+</nav>
+</header>
+<main id=content>
+<div class="post container">
+<div class=post-header-section>
+<h1>The Worst Init System's Best Tool</h1>
+<small role=doc-subtitle></small>
+<p class=post-date>
+January 3, 2021
+</p>
+<ul class=post-tags>
+<li class=post-tag><a href=/tags/linux>Linux</a></li>
+</ul>
+</div>
+<div class=post-content>
+<p>
+<p><em>Originally posted on my <a href=https://git.exozy.me/Ta180m/blog/src/branch/main/_posts/2021-01-03-worst-init-system-best-tool.md>old blog</a></em></p>
+<p>True story: a few weeks ago, I wanted to test out SuperTuxKart but I didn&rsquo;t want to install it on my computer. I had a few options: use a virtual machine and suffer terrible graphics performance, use Docker and suffer the pain of trying to set up graphical acceleration; or use LXC/LXD and suffer the (massive) pain of trying to set up basically anything. I ended up just installing SuperTuxKart to get out of the triple-sided dilemma.</p>
+<p>I didn&rsquo;t know it at the time, but I had the right tool for the job already installed. In fact, the vast majority of Linux systems actually have this tool installed as well. It&rsquo;s called <code>systemd-nspawn</code> and it&rsquo;s surprisingly easy to use.</p>
+<p>Let&rsquo;s get started. I&rsquo;m using an Arch host and Arch container. Other setups should work as well, but using the same OS for the host and container should give you the best compatibility.</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>sudo -s <span style=color:#75715e># get a root shell</span>
+cd /var/lib/machines <span style=color:#75715e># default directory for nspawn containers</span>
+
+<span style=color:#75715e># create a container</span>
+mkdir archlinux
+pacstrap -c archlinux base nano fish sudo neofetch <span style=color:#75715e># add more packages here</span>
+exit <span style=color:#75715e># exit the root shell</span>
+
+<span style=color:#75715e># now &#34;chroot&#34; into it</span>
+sudo systemd-nspawn -D /var/lib/machines/archlinux
+passwd <span style=color:#75715e># set a root password</span>
+rm /etc/securetty /usr/share/factory/etc/securetty <span style=color:#75715e># remove some problematic directories, optionally add them to NoExtract in /etc/pacman.conf</span>
+useradd -m -s /bin/fish -G wheel ta180m <span style=color:#75715e># add a user</span>
+passwd ta180m <span style=color:#75715e># set password</span>
+exit <span style=color:#75715e># exit the &#34;chroot&#34;</span>
+
+<span style=color:#75715e># now the magic happens</span>
+sudo systemd-nspawn -b -D /var/lib/machines/archlinux
+<span style=color:#75715e># log in with the user account</span>
+</code></pre></div><p>To understand what <code>systemd-nspawn</code> does, think of <code>chroot</code> but &ldquo;on steroids&rdquo;. The underlying simplicity of this virtualization method makes it easy to run GUI apps, for example.</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>xhost +local: <span style=color:#75715e># allow local connections to X server</span>
+<span style=color:#75715e># share pacman cache and graphics cards</span>
+<span style=color:#75715e># may need to bind more directories for Nvidia cards</span>
+<span style=color:#75715e># you must have the exact same drivers on the host and container for this to work!</span>
+sudo systemd-nspawn -b -D /var/lib/machines/archlinux --bind<span style=color:#f92672>=</span>/var/cache/pacman/pkg/ --bind-ro<span style=color:#f92672>=</span>/tmp/.X11-unix --bind<span style=color:#f92672>=</span>/dev/dri --bind<span style=color:#f92672>=</span>/dev/shm
+export DISPLAY<span style=color:#f92672>=</span>:0 <span style=color:#75715e># set the display</span>
+<span style=color:#75715e># now you can run GUI apps!</span>
+</code></pre></div><p>Here&rsquo;s SuperTuxKart in all its glory running in a container with full graphical acceleration!</p>
+<p><img src=/images/nspawn-supertuxkart.png alt="SuperTuxKart in a container"></p>
+<p>And that&rsquo;s it! Now you have a fast, simple way to test GUI graphically accelerated apps without messing with your host OS. (I still haven&rsquo;t gotten sound to work yet, but it shouldn&rsquo;t be <em>that</em> hard&mldr;)</p>
+<p>Part of the simplicity of <code>systemd-nspawn</code> is that it is more of an extension of the age-old <code>chroot</code> instead of trying to virtualize too much like Docker. There&rsquo;s no need to worry about virtual network devices, virtual disks, volumes, or any of that stuff. Sure, that limits it in many ways, but it is still a very powerful OS virtualization method when the host and container are running the same OS. Previously, I had also experimented with QEMU/KVM for this, but it seems overkill since the host and guest can share much the OS such as the kernel. Of course, full-blown virtual machines have their own horde of problems, such as terrible graphical acceleration unacceptable for testing SuperTuxKart.</p>
+<p>Here are a few possible use cases:</p>
+<ul>
+<li>
+<p>Installing 32-bit libraries in a container to avoid polluting the host OS</p>
+</li>
+<li>
+<p>Using proprietary NVIDIA drivers in the container and rendering the host&rsquo;s desktop with free drivers</p>
+</li>
+<li>
+<p>One-time testing of apps to avoid installing them on the host</p>
+</li>
+<li>
+<p>Using a different version of a library than the one of the host and avoid <a href=https://en.wikipedia.org/wiki/Dependency_hell>dependency hell</a></p>
+</li>
+<li>
+<p>Having another copy of the OS that you can mess with</p>
+</li>
+</ul>
+<p>And the list goes on and on.</p>
+<p>There&rsquo;s one final thing I need to clarify, and that&rsquo;s the title. By worst init system, you probably know which one I&rsquo;m talking about: systemd. I&rsquo;m not saying that systemd is buggy and doesn&rsquo;t work well (like btrfs for instance), since it works fine and I&rsquo;ve never had any problems with it. The issue with systemd is that it tries to do too much. According to the all-knowing <a href=https://wiki.archlinux.org/index.php/Systemd>ArchWiki</a>:</p>
+<blockquote>
+<p><em>[systemd] provides a system and service manager that runs as PID 1 and starts the rest of the system. systemd provides aggressive parallelization capabilities, uses socket and D-Bus activation for starting services, offers on-demand starting of daemons, keeps track of processes using Linux control groups, maintains mount and automount points, and implements an elaborate transactional dependency-based service control logic. systemd supports SysV and LSB init scripts and works as a replacement for sysvinit. Other parts include a logging daemon, utilities to control basic system configuration like the hostname, date, locale, maintain a list of logged-in users and running containers and virtual machines, system accounts, runtime directories and settings, and daemons to manage simple network configuration, network time synchronization, log forwarding, and name resolution.</em></p>
+</blockquote>
+<p>Whoa! That&rsquo;s a lot!</p>
+<p>Much of the hate that systemd receives stems from these blatant violations of the <a href=https://en.wikipedia.org/wiki/Unix_philosophy>Unix philosophy</a>. systemd does not do one thing and do it well, unlike its predecessors. It does dozens of things, and arguably, it doesn&rsquo;t do them badly, but thought of systemd slowing expanding its grasp on your entire OS is unacceptable to some people. But of course, this begs the question of whether it is really necessary to adhere so strictly to the Unix philosophy, since most big, standalone apps like GIMP and <a href=/posts/linux-office>LibreOffice</a> obviously violate it.</p>
+<p>Still, systemd is everywhere these days, so it might be better to get used to it. Many of its tools are quite good, and <code>systemd-nspawn</code> in particular is exceptional. After watching the proliferation of systemd in the past few years, it&rsquo;s undeniable that it&rsquo;s here to stay.</p>
+<h2 id=further-reading>Further Reading</h2>
+<ul>
+<li>
+<p><a href=https://patrickskiba.com/sysytemd-nspawn/2019/02/08/introduction-to-systemd-nspawn.html>An introductory tutorial</a></p>
+</li>
+<li>
+<p><a href=https://patrickskiba.com/sysytemd-nspawn/2019/03/21/graphical-applications-in-systemd-nspawn.html>Tutorial for GUI apps</a></p>
+</li>
+<li>
+<p><a href=https://liolok.github.io/Run-Desktop-Apps-with-systemd-nspawn-Container/>Another tutorial for GUI apps</a></p>
+</li>
+<li>
+<p><a href=https://wiki.archlinux.org/index.php/Systemd-nspawn>From the ArchWiki</a></p>
+</li>
+</ul>
+</p>
+</div>
+</div>
+</main><footer class=footer>
+<span>Made with ❤️ by Ta180m - CC BY-SA 4.0</span>
+</footer>
+</body>
+</html>

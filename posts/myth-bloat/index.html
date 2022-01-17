@@ -1,0 +1,126 @@
+<!doctype html><html lang=en><head>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<style>:root{--accent-color:#00dd42}</style>
+<title>The Myth of Bloat</title>
+<meta name=description content="Hello! I’m Anthony Wang, a programming, math, and science enthusiast!">
+<meta name=keywords content="Linux,Rant">
+<meta property="og:url" content="https://ta180m.github.io/posts/myth-bloat/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="The Myth of Bloat">
+<meta property="og:description" content="Hello! I’m Anthony Wang, a programming, math, and science enthusiast!">
+<meta property="og:image" content="/dodecahedra/render-small.gif">
+<meta name=twitter:card content="summary_large_image">
+<meta name=twitter:title content="The Myth of Bloat">
+<meta name=twitter:description content="Hello! I’m Anthony Wang, a programming, math, and science enthusiast!">
+<meta property="twitter:domain" content="https://ta180m.github.io/posts/myth-bloat/">
+<meta property="twitter:url" content="https://ta180m.github.io/posts/myth-bloat/">
+<meta name=twitter:image content="/dodecahedra/render-small.gif">
+<link rel=canonical href=https://ta180m.github.io/posts/myth-bloat/>
+<link rel=stylesheet type=text/css href=/css/normalize.min.css media=print onload="this.media='all'">
+<link rel=stylesheet type=text/css href=/css/main.css>
+<link disabled id=dark-theme rel=stylesheet href=/css/dark.css>
+<script src=/js/svg-injector.min.js></script>
+<script src=/js/feather-icons.min.js></script>
+<script src=/js/main.js></script>
+</head>
+<body>
+<script type=text/javascript>setThemeByUserPref()</script><header class=header>
+<nav class=header-nav>
+<div class=avatar>
+<a href=https://ta180m.github.io/>
+<img src=/dodecahedra/render-small.gif alt=avatar>
+</a>
+</div>
+<div class=nav-title>
+<a class=nav-brand href=https://ta180m.github.io/>Some Random Website</a>
+</div>
+<div class=nav-links>
+<div class=nav-link>
+<a href=/about/><span data-feather=aperture></span> About </a>
+</div>
+<div class=nav-link>
+<a href=/projects/><span data-feather=package></span> Projects </a>
+</div>
+<div class=nav-link>
+<a href=/posts/><span data-feather=book></span> Posts </a>
+</div>
+<div class=nav-link>
+<a href=/tags/><span data-feather=tag></span> Tags </a>
+</div>
+<div class=nav-link>
+<a href=/index.xml><span data-feather=rss></span> Feed </a>
+</div>
+<div class=nav-link>
+<a href=https://git.exozy.me/Ta180m/website><span data-feather=git-pull-request></span> Git </a>
+</div>
+<span class=nav-icons-divider></span>
+<div class="nav-link dark-theme-toggle">
+<a>
+<span id=theme-toggle-icon data-feather=moon></span>
+</a>
+</div>
+<div class=nav-link id=hamburger-menu-toggle>
+<a>
+<span data-feather=menu></span>
+</a>
+</div>
+<ul class="nav-hamburger-list visibility-hidden">
+<li class=nav-item>
+<a href=/about/><span data-feather=aperture></span> About </a>
+</li>
+<li class=nav-item>
+<a href=/projects/><span data-feather=package></span> Projects </a>
+</li>
+<li class=nav-item>
+<a href=/posts/><span data-feather=book></span> Posts </a>
+</li>
+<li class=nav-item>
+<a href=/tags/><span data-feather=tag></span> Tags </a>
+</li>
+<li class=nav-item>
+<a href=/index.xml><span data-feather=rss></span> Feed </a>
+</li>
+<li class=nav-item>
+<a href=https://git.exozy.me/Ta180m/website><span data-feather=git-pull-request></span> Git </a>
+</li>
+<li class="nav-item dark-theme-toggle">
+<a>
+<span id=theme-toggle-icon data-feather=moon></span>
+</a>
+</li>
+</ul>
+</div>
+</nav>
+</header>
+<main id=content>
+<div class="post container">
+<div class=post-header-section>
+<h1>The Myth of Bloat</h1>
+<small role=doc-subtitle></small>
+<p class=post-date>
+June 4, 2021
+</p>
+<ul class=post-tags>
+<li class=post-tag><a href=/tags/linux>Linux</a></li>
+<li class=post-tag><a href=/tags/rant>Rant</a></li>
+</ul>
+</div>
+<div class=post-content>
+<p>
+<p><em>Originally posted on my <a href=https://git.exozy.me/Ta180m/blog/src/branch/main/_posts/2021-06-04-myth-bloat.md>old blog</a></em></p>
+<p>If there&rsquo;s one thing that hardcore Linux users are ridiculously obsessed about, it&rsquo;s the vague and scary concept of <em>bloat</em>. You gotta keep package counts low, use <a href=/posts/why-wms-suck>WMs</a>, and compile <a href=suckless.org/>suckless.org stuff</a>. Visit any Arch or Gentoo forum or chat, and this philosophy seems to be epidemical. But&mldr; there&rsquo;s a gaping problem: package count is totally irrelevant, WMs are painful to configure, and suckless.org software really sucks. Yes, it&rsquo;s all a load of nonsense.</p>
+<p>Let&rsquo;s start with the term &ldquo;bloat&rdquo;. What does it even mean? Wikipedia offers a few definitions, such as <a href=https://en.wikipedia.org/wiki/Code_bloat>code bloat</a> and <a href=https://en.wikipedia.org/wiki/Software_bloat>software bloat</a> which are definitely legitimate issues. However, this obsession with bloat seems to be about something different; an allergic aversion to any software that&rsquo;s sufficiently complex.</p>
+<p>What about package counts?</p>
+<p><img src=/images/package-count.png alt="Wise words"></p>
+<p>It&rsquo;s actually really easy to get a very low package count: just install Windows and you can brag about having zero packages installed. Beat that!</p>
+<p>Enough said about package count; The issue with WMs and other supposedly &ldquo;minimalistic&rdquo; software is that <em>it&rsquo;s simply worse than its alternatives unless you use are purely optimizing for metrics like lowest number of lines of code.</em> Holistically, they&rsquo;re just&mldr; worse.</p>
+<p>Well, that was quite the rant.</p>
+</p>
+</div>
+</div>
+</main><footer class=footer>
+<span>Made with ❤️ by Ta180m - CC BY-SA 4.0</span>
+</footer>
+</body>
+</html>

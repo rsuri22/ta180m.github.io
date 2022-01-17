@@ -1,0 +1,126 @@
+<!doctype html><html lang=en><head>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<style>:root{--accent-color:#00dd42}</style>
+<title>Make Wayland Scaling Less Painful</title>
+<meta name=description content="A small fix to improve Wayland scaling for 4K displays">
+<meta name=keywords content="linux,kde,wayland">
+<meta property="og:url" content="https://ta180m.github.io/posts/make-wayland-scaling-less-painful/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Make Wayland Scaling Less Painful">
+<meta property="og:description" content="A small fix to improve Wayland scaling for 4K displays">
+<meta property="og:image" content="/dodecahedra/render-small.gif">
+<meta name=twitter:card content="summary_large_image">
+<meta name=twitter:title content="Make Wayland Scaling Less Painful">
+<meta name=twitter:description content="A small fix to improve Wayland scaling for 4K displays">
+<meta property="twitter:domain" content="https://ta180m.github.io/posts/make-wayland-scaling-less-painful/">
+<meta property="twitter:url" content="https://ta180m.github.io/posts/make-wayland-scaling-less-painful/">
+<meta name=twitter:image content="/dodecahedra/render-small.gif">
+<link rel=canonical href=https://ta180m.github.io/posts/make-wayland-scaling-less-painful/>
+<link rel=stylesheet type=text/css href=/css/normalize.min.css media=print onload="this.media='all'">
+<link rel=stylesheet type=text/css href=/css/main.css>
+<link disabled id=dark-theme rel=stylesheet href=/css/dark.css>
+<script src=/js/svg-injector.min.js></script>
+<script src=/js/feather-icons.min.js></script>
+<script src=/js/main.js></script>
+</head>
+<body>
+<script type=text/javascript>setThemeByUserPref()</script><header class=header>
+<nav class=header-nav>
+<div class=avatar>
+<a href=https://ta180m.github.io/>
+<img src=/dodecahedra/render-small.gif alt=avatar>
+</a>
+</div>
+<div class=nav-title>
+<a class=nav-brand href=https://ta180m.github.io/>Some Random Website</a>
+</div>
+<div class=nav-links>
+<div class=nav-link>
+<a href=/about/><span data-feather=aperture></span> About </a>
+</div>
+<div class=nav-link>
+<a href=/projects/><span data-feather=package></span> Projects </a>
+</div>
+<div class=nav-link>
+<a href=/posts/><span data-feather=book></span> Posts </a>
+</div>
+<div class=nav-link>
+<a href=/tags/><span data-feather=tag></span> Tags </a>
+</div>
+<div class=nav-link>
+<a href=/index.xml><span data-feather=rss></span> Feed </a>
+</div>
+<div class=nav-link>
+<a href=https://git.exozy.me/Ta180m/website><span data-feather=git-pull-request></span> Git </a>
+</div>
+<span class=nav-icons-divider></span>
+<div class="nav-link dark-theme-toggle">
+<a>
+<span id=theme-toggle-icon data-feather=moon></span>
+</a>
+</div>
+<div class=nav-link id=hamburger-menu-toggle>
+<a>
+<span data-feather=menu></span>
+</a>
+</div>
+<ul class="nav-hamburger-list visibility-hidden">
+<li class=nav-item>
+<a href=/about/><span data-feather=aperture></span> About </a>
+</li>
+<li class=nav-item>
+<a href=/projects/><span data-feather=package></span> Projects </a>
+</li>
+<li class=nav-item>
+<a href=/posts/><span data-feather=book></span> Posts </a>
+</li>
+<li class=nav-item>
+<a href=/tags/><span data-feather=tag></span> Tags </a>
+</li>
+<li class=nav-item>
+<a href=/index.xml><span data-feather=rss></span> Feed </a>
+</li>
+<li class=nav-item>
+<a href=https://git.exozy.me/Ta180m/website><span data-feather=git-pull-request></span> Git </a>
+</li>
+<li class="nav-item dark-theme-toggle">
+<a>
+<span id=theme-toggle-icon data-feather=moon></span>
+</a>
+</li>
+</ul>
+</div>
+</nav>
+</header>
+<main id=content>
+<div class="post container">
+<div class=post-header-section>
+<h1>Make Wayland Scaling Less Painful</h1>
+<small role=doc-subtitle>A small fix to improve Wayland scaling for 4K displays</small>
+<p class=post-date>
+January 1, 2022
+</p>
+<ul class=post-tags>
+<li class=post-tag><a href=/tags/linux>linux</a></li>
+<li class=post-tag><a href=/tags/kde>kde</a></li>
+<li class=post-tag><a href=/tags/wayland>wayland</a></li>
+</ul>
+</div>
+<div class=post-content>
+<p>
+<p>Wayland is awesome. It supports my 4K 60Hz monitor out-of-the-box without any Xorg configuration or custom EDID file hackery. Even <a href=https://zamundaaa.github.io/wayland/2021/12/14/about-gaming-on-wayland.html>gaming on Wayland</a> more or less works.</p>
+<p>There&rsquo;s only one problem or I would have ditched Xorg forever.</p>
+<p>Everything on the 4K monitor is really really tiny! You might say, why not just apply some scaling? After all, KDE Plasma has great fraction scaling support and just works™ on Xorg. The problem is that Wayland apps scale perfectly but XWayland apps&mldr; not so much. There&rsquo;s been <a href=https://gitlab.freedesktop.org/xorg/xserver/-/merge_requests/733>merge requests</a> for three years now to fix this, but nothing much has happened to improve the situation.</p>
+<p>Of course, most of the apps I use support Wayland anyways&mldr; except for games. And games are the whole reason for using the 4K 60Hz monitor!</p>
+<p>So I basically have three options here: destroy my eyeballs by having to look at tiny text and windows, run the monitor at a lower resolution like 1080p and destroy the 4K experience, or use scaling and have to suffer blurry XWayland apps and games.</p>
+<p>Actually, there&rsquo;s a fourth option. Instead of scaling everything, why not just scale text by forcing a high font DPI? Windows and icons will still be tiny, but at least you&rsquo;ll be able to read the text! KDE Plasma conveniently has an option in the font settings to do this, and I&rsquo;m sure other DEs and <a href=/posts/why-wms-suck/>WMs</a> have similar settings.</p>
+<p>So there you have it: forcing the font DPI doesn&rsquo;t scale things perfectly—in fact it&rsquo;s far from perfect and buggy sometimes—but it&rsquo;s better than straining your eyes to look at tiny text all day. Hopefully this makes your Wayland experience much more enjoyable.</p>
+</p>
+</div>
+</div>
+</main><footer class=footer>
+<span>Made with ❤️ by Ta180m - CC BY-SA 4.0</span>
+</footer>
+</body>
+</html>

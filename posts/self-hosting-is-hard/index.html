@@ -1,0 +1,147 @@
+<!doctype html><html lang=en><head>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<style>:root{--accent-color:#00dd42}</style>
+<title>Self-hosting is Hard!</title>
+<meta name=description content="Hello! I’m Anthony Wang, a programming, math, and science enthusiast!">
+<meta name=keywords content="Linux">
+<meta property="og:url" content="https://ta180m.github.io/posts/self-hosting-is-hard/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Self-hosting is Hard!">
+<meta property="og:description" content="Hello! I’m Anthony Wang, a programming, math, and science enthusiast!">
+<meta property="og:image" content="/dodecahedra/render-small.gif">
+<meta name=twitter:card content="summary_large_image">
+<meta name=twitter:title content="Self-hosting is Hard!">
+<meta name=twitter:description content="Hello! I’m Anthony Wang, a programming, math, and science enthusiast!">
+<meta property="twitter:domain" content="https://ta180m.github.io/posts/self-hosting-is-hard/">
+<meta property="twitter:url" content="https://ta180m.github.io/posts/self-hosting-is-hard/">
+<meta name=twitter:image content="/dodecahedra/render-small.gif">
+<link rel=canonical href=https://ta180m.github.io/posts/self-hosting-is-hard/>
+<link rel=stylesheet type=text/css href=/css/normalize.min.css media=print onload="this.media='all'">
+<link rel=stylesheet type=text/css href=/css/main.css>
+<link disabled id=dark-theme rel=stylesheet href=/css/dark.css>
+<script src=/js/svg-injector.min.js></script>
+<script src=/js/feather-icons.min.js></script>
+<script src=/js/main.js></script>
+</head>
+<body>
+<script type=text/javascript>setThemeByUserPref()</script><header class=header>
+<nav class=header-nav>
+<div class=avatar>
+<a href=https://ta180m.github.io/>
+<img src=/dodecahedra/render-small.gif alt=avatar>
+</a>
+</div>
+<div class=nav-title>
+<a class=nav-brand href=https://ta180m.github.io/>Some Random Website</a>
+</div>
+<div class=nav-links>
+<div class=nav-link>
+<a href=/about/><span data-feather=aperture></span> About </a>
+</div>
+<div class=nav-link>
+<a href=/projects/><span data-feather=package></span> Projects </a>
+</div>
+<div class=nav-link>
+<a href=/posts/><span data-feather=book></span> Posts </a>
+</div>
+<div class=nav-link>
+<a href=/tags/><span data-feather=tag></span> Tags </a>
+</div>
+<div class=nav-link>
+<a href=/index.xml><span data-feather=rss></span> Feed </a>
+</div>
+<div class=nav-link>
+<a href=https://git.exozy.me/Ta180m/website><span data-feather=git-pull-request></span> Git </a>
+</div>
+<span class=nav-icons-divider></span>
+<div class="nav-link dark-theme-toggle">
+<a>
+<span id=theme-toggle-icon data-feather=moon></span>
+</a>
+</div>
+<div class=nav-link id=hamburger-menu-toggle>
+<a>
+<span data-feather=menu></span>
+</a>
+</div>
+<ul class="nav-hamburger-list visibility-hidden">
+<li class=nav-item>
+<a href=/about/><span data-feather=aperture></span> About </a>
+</li>
+<li class=nav-item>
+<a href=/projects/><span data-feather=package></span> Projects </a>
+</li>
+<li class=nav-item>
+<a href=/posts/><span data-feather=book></span> Posts </a>
+</li>
+<li class=nav-item>
+<a href=/tags/><span data-feather=tag></span> Tags </a>
+</li>
+<li class=nav-item>
+<a href=/index.xml><span data-feather=rss></span> Feed </a>
+</li>
+<li class=nav-item>
+<a href=https://git.exozy.me/Ta180m/website><span data-feather=git-pull-request></span> Git </a>
+</li>
+<li class="nav-item dark-theme-toggle">
+<a>
+<span id=theme-toggle-icon data-feather=moon></span>
+</a>
+</li>
+</ul>
+</div>
+</nav>
+</header>
+<main id=content>
+<div class="post container">
+<div class=post-header-section>
+<h1>Self-hosting is Hard!</h1>
+<small role=doc-subtitle></small>
+<p class=post-date>
+April 7, 2021
+</p>
+<ul class=post-tags>
+<li class=post-tag><a href=/tags/linux>Linux</a></li>
+</ul>
+</div>
+<div class=post-content>
+<p>
+<p><em>Originally posted on my <a href=https://git.exozy.me/Ta180m/blog/src/branch/main/_posts/2021-04-07-self-hosting-is-hard.md>old blog</a></em></p>
+<p>It&rsquo;s been over a week since I&rsquo;ve completed my build and switched over many things to self-hosting. Here&rsquo;s how it went:</p>
+<h2 id=it-works>It works!</h2>
+<h3 id=remote-desktop>Remote desktop</h3>
+<p><img src=/images/vnc.png alt=VNC></p>
+<p>VNC works perfectly. OK, fine, I haven&rsquo;t figured out clipboad sharing yet, but other than that, it&rsquo;s perfect. I also tried Xrdp but didn&rsquo;t have much luck. There&rsquo;s also X2Go which bundles some extra perks like sound and clipboard sharing, but the image quality is blurry at times. Oh well, VNC is better anyways!</p>
+<h3 id=nextcloud>Nextcloud</h3>
+<p><img src=/images/nextcloud.png alt=Nextcloud></p>
+<p>Nextcloud is basically a huge hammer that tries to attack every nail. For most cases, a more specialized tool would be better, but Nextcloud can still give you a surprisingly functional solution to&mldr; file sharing, real-time collaborative document editing, photo management, chat, email client, contacts, calendar, music streaming, notes, tasks, forms, maps, Matrix client, and RSS client. So yeah, Nextcloud knocks down quite a few bowling pins with one gigantically overpowered bowling, or perhaps more accurately, wrecking ball.</p>
+<p>I anticipated a painful setup process for such a large monolith, but it went surprisingly smoothly. Perfect!</p>
+<h3 id=gitea>Gitea</h3>
+<p><img src=/images/gitea.png alt=Gitea></p>
+<p>Gitea is one of the most boring things I&rsquo;ve ever self-hosted. It just simply works! All my problem solving skills are simply going to waste&mldr; And I still don&rsquo;t know how to pronounce that name&mldr;</p>
+<p>On a more serious note, I&rsquo;m currently using it to mirror all my GitHub repositories, since like it or not, GitHub is where it&rsquo;s at. So my &ldquo;hybrid hosting&rdquo; seems to be the best compromise.</p>
+<h3 id=qemukvm>QEMU/KVM</h3>
+<p><img src=/images/vmm.png alt="Virtual Machine Manager connected to my home server"></p>
+<p>Awww yeah, my favorite long acronym! QEMU/KVM is awesome, but I didn&rsquo;t know it was <em>this awesome</em>! Now I can run all my virtual machines on my laptop, but actually on my home server, without my laptop&rsquo;s fans spinning up loudly!</p>
+<h3 id=jupyter-notebooks>Jupyter notebooks</h3>
+<p>Another thing that boringly just works. It&rsquo;s great to be able to run computationally intense things without my laptops fans screaming.</p>
+<h2 id=kinda-works>Kinda works</h2>
+<h3 id=matrix>Matrix</h3>
+<p>Maybe it&rsquo;s just Synapse&rsquo;s fault, but my Matrix homeserver devours RAM like a starving lion. Why does it need 1.5 GB? Sure, I have 16 GB, plus another 16 GB of swap (for hibernation), but Synapse simply shouldn&rsquo;t need that much RAM.</p>
+<p>And don&rsquo;t get me started on <code>mx-puppet-discord</code>. It may have seemed like just a small thing to self-host, but it was by far the hardest to set up. <em>And</em> it even uses a noticable bit of CPU in the background as an added bonus.</p>
+<h3 id=diy-cloud-gaming>DIY cloud gaming</h3>
+<p><img src=/images/stk.png alt="SuperTuxKart, streamed from the &ldquo;cloud&rdquo;"></p>
+<p>As crazy as it sounds, this is actually nearly usable! The only thing preventing this from working perfectly are my <a href=/posts/worst-first-build-part-4>terrible GPU</a> and the limitations of VNC, since proprietary cloud gaming services use their own protocols optimized for low latency. I can get sound using X2Go, but it doesn&rsquo;t always work well. Plus X2Go&rsquo;s image quality is not the best. Still, we&rsquo;ll see how this goes, since it&rsquo;s pretty promising!</p>
+<h2 id=nope>Nope</h2>
+<h3 id=pi-hole>Pi-hole</h3>
+<p>Pi-hole is great! I actually really like it. But <em>why</em> does it need to use its own version of <code>dnsmasq</code>? It just wants to break my virtual networks, doesn&rsquo;t it? Now my VMs don&rsquo;t have internet! Maybe I won&rsquo;t have this problem if I run it in Docker. But Docker is a completely different beast I kind of want to avoid for now if I can. More maintainence costs, anyways.</p>
+<p>So there you have it. If you want to self-host, there&rsquo;s something crucial that you need: time, lots of it. With enough time, anything is possible. Even getting <code>mx-puppet-discord</code> to work.</p>
+</p>
+</div>
+</div>
+</main><footer class=footer>
+<span>Made with ❤️ by Ta180m - CC BY-SA 4.0</span>
+</footer>
+</body>
+</html>

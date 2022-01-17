@@ -1,0 +1,131 @@
+<!doctype html><html lang=en><head>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<style>:root{--accent-color:#00dd42}</style>
+<title>Find Deleted Matrix Messages</title>
+<meta name=description content="How to troll your friends by digging up their deleted Matrix messages">
+<meta name=keywords content="Linux,Self-hosting">
+<meta property="og:url" content="https://ta180m.github.io/posts/find-deleted-matrix-messages/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Find Deleted Matrix Messages">
+<meta property="og:description" content="How to troll your friends by digging up their deleted Matrix messages">
+<meta property="og:image" content="/dodecahedra/render-small.gif">
+<meta name=twitter:card content="summary_large_image">
+<meta name=twitter:title content="Find Deleted Matrix Messages">
+<meta name=twitter:description content="How to troll your friends by digging up their deleted Matrix messages">
+<meta property="twitter:domain" content="https://ta180m.github.io/posts/find-deleted-matrix-messages/">
+<meta property="twitter:url" content="https://ta180m.github.io/posts/find-deleted-matrix-messages/">
+<meta name=twitter:image content="/dodecahedra/render-small.gif">
+<link rel=canonical href=https://ta180m.github.io/posts/find-deleted-matrix-messages/>
+<link rel=stylesheet type=text/css href=/css/normalize.min.css media=print onload="this.media='all'">
+<link rel=stylesheet type=text/css href=/css/main.css>
+<link disabled id=dark-theme rel=stylesheet href=/css/dark.css>
+<script src=/js/svg-injector.min.js></script>
+<script src=/js/feather-icons.min.js></script>
+<script src=/js/main.js></script>
+</head>
+<body>
+<script type=text/javascript>setThemeByUserPref()</script><header class=header>
+<nav class=header-nav>
+<div class=avatar>
+<a href=https://ta180m.github.io/>
+<img src=/dodecahedra/render-small.gif alt=avatar>
+</a>
+</div>
+<div class=nav-title>
+<a class=nav-brand href=https://ta180m.github.io/>Some Random Website</a>
+</div>
+<div class=nav-links>
+<div class=nav-link>
+<a href=/about/><span data-feather=aperture></span> About </a>
+</div>
+<div class=nav-link>
+<a href=/projects/><span data-feather=package></span> Projects </a>
+</div>
+<div class=nav-link>
+<a href=/posts/><span data-feather=book></span> Posts </a>
+</div>
+<div class=nav-link>
+<a href=/tags/><span data-feather=tag></span> Tags </a>
+</div>
+<div class=nav-link>
+<a href=/index.xml><span data-feather=rss></span> Feed </a>
+</div>
+<div class=nav-link>
+<a href=https://git.exozy.me/Ta180m/website><span data-feather=git-pull-request></span> Git </a>
+</div>
+<span class=nav-icons-divider></span>
+<div class="nav-link dark-theme-toggle">
+<a>
+<span id=theme-toggle-icon data-feather=moon></span>
+</a>
+</div>
+<div class=nav-link id=hamburger-menu-toggle>
+<a>
+<span data-feather=menu></span>
+</a>
+</div>
+<ul class="nav-hamburger-list visibility-hidden">
+<li class=nav-item>
+<a href=/about/><span data-feather=aperture></span> About </a>
+</li>
+<li class=nav-item>
+<a href=/projects/><span data-feather=package></span> Projects </a>
+</li>
+<li class=nav-item>
+<a href=/posts/><span data-feather=book></span> Posts </a>
+</li>
+<li class=nav-item>
+<a href=/tags/><span data-feather=tag></span> Tags </a>
+</li>
+<li class=nav-item>
+<a href=/index.xml><span data-feather=rss></span> Feed </a>
+</li>
+<li class=nav-item>
+<a href=https://git.exozy.me/Ta180m/website><span data-feather=git-pull-request></span> Git </a>
+</li>
+<li class="nav-item dark-theme-toggle">
+<a>
+<span id=theme-toggle-icon data-feather=moon></span>
+</a>
+</li>
+</ul>
+</div>
+</nav>
+</header>
+<main id=content>
+<div class="post container">
+<div class=post-header-section>
+<h1>Find Deleted Matrix Messages</h1>
+<small role=doc-subtitle>How to troll your friends by digging up their deleted Matrix messages</small>
+<p class=post-date>
+November 23, 2021
+</p>
+<ul class=post-tags>
+<li class=post-tag><a href=/tags/linux>Linux</a></li>
+<li class=post-tag><a href=/tags/self-hosting>Self-hosting</a></li>
+</ul>
+</div>
+<div class=post-content>
+<p>
+<p>It feels like I haven&rsquo;t written a blog post in forever, and plus, I want to test Hugo&rsquo;s code block formatting.</p>
+<p>Anyways, time for something actually fun and useful&mldr;</p>
+<p>So you self-host a Matrix server, right? If not, this guide won&rsquo;t be very useful. It&rsquo;s still hilarious though.</p>
+<p>If you ever get tired of ghost pings or trolls quickly deleting their Matrix messages, you can troll them right back. The Synapse Matrix server keeps deleted messages for about a week in the database before permanently deleting them. That means you can dig them right back out in only two minutes.</p>
+<p>First, open up a PostgreSQL console for your Synapse database. On Arch Linux, you can do that like this:</p>
+<pre tabindex=0><code>sudo -iu postgres
+PAGER=less psql -d synapse
+</code></pre><p>Now go into your Matrix client and find the internal room ID for the room where the message was deleted. In Element, you can find this in the Advanced tab of the room settings. The room ID should look something like <code>!GtIfdsfQtQIgbQSxwJ:archlinux.org</code> (in this case, the infamous <a href=https://matrix.to/#/#archlinux:archlinux.org>Arch Linux room</a>).</p>
+<p>Time for some SQL! Use this command to find the redacted message in the <code>event_json</code> table, which should be at the bottom of the output:</p>
+<pre tabindex=0><code>select * from event_json where room_id='!GtIfdsfQtQIgbQSxwJ:archlinux.org';
+</code></pre><p>See which <code>event_id</code> that the redaction is redacting. Now find that <code>event_id</code> in the <code>event_json</code> and you&rsquo;ve found the deleted message!</p>
+<pre tabindex=0><code>select * from event_json where event_id='$74R4Y1W9cf_mblMogX7bONx_hk3xIqcB8FCOXydUV2M';
+</code></pre><p>Fun, isn&rsquo;t it? Anyways, maybe it&rsquo;ll be useful someday.</p>
+</p>
+</div>
+</div>
+</main><footer class=footer>
+<span>Made with ❤️ by Ta180m - CC BY-SA 4.0</span>
+</footer>
+</body>
+</html>

@@ -1,0 +1,159 @@
+<!doctype html><html lang=en><head>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<style>:root{--accent-color:#00dd42}</style>
+<title>Worst First Build - The Quest for a GPU</title>
+<meta name=description content="Hello! I’m Anthony Wang, a programming, math, and science enthusiast!">
+<meta name=keywords content="Hardware">
+<meta property="og:url" content="https://ta180m.github.io/posts/worst-first-build-3/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Worst First Build - The Quest for a GPU">
+<meta property="og:description" content="Hello! I’m Anthony Wang, a programming, math, and science enthusiast!">
+<meta property="og:image" content="/dodecahedra/render-small.gif">
+<meta name=twitter:card content="summary_large_image">
+<meta name=twitter:title content="Worst First Build - The Quest for a GPU">
+<meta name=twitter:description content="Hello! I’m Anthony Wang, a programming, math, and science enthusiast!">
+<meta property="twitter:domain" content="https://ta180m.github.io/posts/worst-first-build-3/">
+<meta property="twitter:url" content="https://ta180m.github.io/posts/worst-first-build-3/">
+<meta name=twitter:image content="/dodecahedra/render-small.gif">
+<link rel=canonical href=https://ta180m.github.io/posts/worst-first-build-3/>
+<link rel=stylesheet type=text/css href=/css/normalize.min.css media=print onload="this.media='all'">
+<link rel=stylesheet type=text/css href=/css/main.css>
+<link disabled id=dark-theme rel=stylesheet href=/css/dark.css>
+<script src=/js/svg-injector.min.js></script>
+<script src=/js/feather-icons.min.js></script>
+<script src=/js/main.js></script>
+</head>
+<body>
+<script type=text/javascript>setThemeByUserPref()</script><header class=header>
+<nav class=header-nav>
+<div class=avatar>
+<a href=https://ta180m.github.io/>
+<img src=/dodecahedra/render-small.gif alt=avatar>
+</a>
+</div>
+<div class=nav-title>
+<a class=nav-brand href=https://ta180m.github.io/>Some Random Website</a>
+</div>
+<div class=nav-links>
+<div class=nav-link>
+<a href=/about/><span data-feather=aperture></span> About </a>
+</div>
+<div class=nav-link>
+<a href=/projects/><span data-feather=package></span> Projects </a>
+</div>
+<div class=nav-link>
+<a href=/posts/><span data-feather=book></span> Posts </a>
+</div>
+<div class=nav-link>
+<a href=/tags/><span data-feather=tag></span> Tags </a>
+</div>
+<div class=nav-link>
+<a href=/index.xml><span data-feather=rss></span> Feed </a>
+</div>
+<div class=nav-link>
+<a href=https://git.exozy.me/Ta180m/website><span data-feather=git-pull-request></span> Git </a>
+</div>
+<span class=nav-icons-divider></span>
+<div class="nav-link dark-theme-toggle">
+<a>
+<span id=theme-toggle-icon data-feather=moon></span>
+</a>
+</div>
+<div class=nav-link id=hamburger-menu-toggle>
+<a>
+<span data-feather=menu></span>
+</a>
+</div>
+<ul class="nav-hamburger-list visibility-hidden">
+<li class=nav-item>
+<a href=/about/><span data-feather=aperture></span> About </a>
+</li>
+<li class=nav-item>
+<a href=/projects/><span data-feather=package></span> Projects </a>
+</li>
+<li class=nav-item>
+<a href=/posts/><span data-feather=book></span> Posts </a>
+</li>
+<li class=nav-item>
+<a href=/tags/><span data-feather=tag></span> Tags </a>
+</li>
+<li class=nav-item>
+<a href=/index.xml><span data-feather=rss></span> Feed </a>
+</li>
+<li class=nav-item>
+<a href=https://git.exozy.me/Ta180m/website><span data-feather=git-pull-request></span> Git </a>
+</li>
+<li class="nav-item dark-theme-toggle">
+<a>
+<span id=theme-toggle-icon data-feather=moon></span>
+</a>
+</li>
+</ul>
+</div>
+</nav>
+</header>
+<main id=content>
+<div class="post container">
+<div class=post-header-section>
+<h1>Worst First Build - The Quest for a GPU</h1>
+<small role=doc-subtitle></small>
+<p class=post-date>
+March 15, 2021
+</p>
+<ul class=post-tags>
+<li class=post-tag><a href=/tags/hardware>Hardware</a></li>
+</ul>
+</div>
+<div class=post-content>
+<p>
+<p><em>Originally posted on my <a href=https://git.exozy.me/Ta180m/blog/src/branch/main/_posts/2021-03-15-worst-first-build-part-3.md>old blog</a></em></p>
+<p>Last Wednesday, March 10th, was going to be <em>the day</em>. The day I finally could complete a functioning (but incomplete) build. My slightly overpriced RAM sticks (RAM prices were creeping upward sinisterly so I decided I probably shouldn&rsquo;t wait longer. Probably a bad move, too, but whatever.) were arriving, and it was going to be momentous. I was going to boot up an Arch USB drive, SSH in, and get the party going.</p>
+<p><img src=/images/build.jpg alt="A low-quality image of the build, sans RAM, courtesy of an terrible iPad camera"></p>
+<p>Yeah&mldr; that didn’t exactly happen.</p>
+<p>The first ominous sign was that the motherboard shipped with an old BIOS. According to anonymous Redditers, that particular version could boot to the BIOS menu, but no further. It wasn’t old enough to be a major problem, since I could probably still do a BIOS update, but it was definitely the first thorn in a long line of problems.</p>
+<p>So on the big day, the RAM sticks arrive a few hours before Amazon predicted; always a good sign. It was the final piece of the puzzle, and now my build could finally start functioning! Installing the RAM went smoothly too. But everything basically fell off a cliff from there.</p>
+<p>The first glaring indicator of an impeding disaster was that when I pressed the power button, the lights and fans whirred as expected, and the motherboard went through its POST, but monitor stayed pitch black. No signal.</p>
+<p>Aw man, I didn&rsquo;t have a GPU, so&mldr; no signal! I was going to have to do this blind. No problem, though, since I could SSH in, right?</p>
+<p>Well&mldr; let&rsquo;s not get ahead of ourselves. I still need to boot up Arch, right?</p>
+<p>So I plug in the USB drive, and try to boot up, but oops! I can&rsquo;t see anything! So I have no idea if I really booted up or not, but according to <code>nmap</code>, no new network devices popped up, so I&rsquo;ll take that as a no.</p>
+<p>I retrace all my steps, and recognize that SSH isn&rsquo;t correctly set up on the default install images. So&mldr; I go through the long detour of creating my own <a href=https://wiki.archlinux.org/index.php/Archiso>Archiso</a> with SSH ready to go, and 15 minutes and one <code>dd</code> later, my USB drive is ready!</p>
+<p>I do the boot sequence again (actually, several times) but still it doesn&rsquo;t work.</p>
+<p>Oh wait! The old BIOS! It&rsquo;s probably unable to boot Arch because of the old BIOS! I need to update it! An fortunately enough, I don&rsquo;t have a display.</p>
+<p>I hate manufacturers that create convoluted BIOSes — especially ones that are absolutely impossible to navigate blindly! It doesn&rsquo;t help that BIOS updates tend to shuffle around the settings. I tried watching a YouTube video of someone showing off the BIOS, but it was a lost cause. It was impossible to do without a display.</p>
+<p>Alright, so I got to find a GPU&mldr; dddaaarrrnnn!!!</p>
+<p>The thing about buying a GPU right now is that everything&rsquo;s in one of two states: sold out, or marked up at extraordinary prices. <a href="https://www.amazon.com/GeForce-192-bit-Compatible-DirectX-Graphics/dp/B08YCRY3V7/ref=sr_1_1?dchild=1&keywords=geforce+gtx+%221060%22&qid=1615860494&sr=8-1">Five-year-old GPUs are fetching nearly two times their original price</a>, and the <a href=https://www.techradar.com/news/current-nvidia-rtx-3000-gpu-prices-are-so-much-worse-than-we-thought>latest releases</a>? Just forget it.</p>
+<p>Why is this happening? Well, it happens to be the perfect storm:</p>
+<ol>
+<li>
+<p><strong>COVID-19</strong>: Everyone&rsquo;s stuck inside, and what to do to pass the time? Game, of course! Everyone&rsquo;s building PCs, and the supply simply can&rsquo;t keep up, and prices are balooning into the stratosphere. But that&rsquo;s not it.</p>
+</li>
+<li>
+<p><strong>Cryptomining</strong>: With Bitcoin and Ethereum smashing price records, cryptomining is back in full swing now. With one of the latest GPUs, you could be making <em>$5 a day!</em>. Mine for two months, and that&rsquo;ll be $300. You&rsquo;ll be willing to pay much higher for GPUs, pushing prices into the mesosphere. Yeah, Nvidia&rsquo;s messing with the BIOS of their latest RTX 3060, but will it help? <a href=https://www.theverge.com/platform/amp/2021/3/16/22333544/nvidia-rtx-3060-ethereum-mining-rate-limit-unlock-driver>Not much</a>.</p>
+</li>
+<li>
+<p><strong>Component shortages</strong>: The demand right now is overwhelming, but what about supply? It doesn&rsquo;t look very rosy either. In fact, quite the opposite. Manufacturers are trying to churn out electronic devices as fast as they can, and GPU components like DDR memory is in very short supply. Prices are skyrocketing into the thermosphere now.</p>
+</li>
+<li>
+<p><strong>Tariffs</strong>: Yep, even Trump has something to do with this. His last round of tariffs, this time including graphics cards, are the perfect cherry on top. Now prices are way up in the exosphere. Just great!</p>
+</li>
+</ol>
+<p>Of course, <a href=https://naturecheck.org/2021/03/15/cpu-and-gpu-availability-and-pricing-update-march-2021/>there are other reasons as well</a>, such as companies focusing more on CPUs and other more profitable parts, but GPU prices just seem to keep on going up.</p>
+<p>With prices this high, who&rsquo;s actually buying the GPUs now? There has to be at least someone buying them.</p>
+<p>Well, it&rsquo;s probably people who are extremely price inelastic or people who know absolutely nothing about normal GPU prices. Or just extremely wealthy people.</p>
+<p>Even at the local <a href=ategory/4294966937/video-cards>Micro Center</a>, all they have now is some extremely overpriced Quadros and a few GTX 710s that are even slower than my laptop&rsquo;s current GPU. Doesn&rsquo;t look to good to be buying GPUs now. I <em>could</em> buy one since they aren&rsquo;t as overpriced as the ones on eBay, but that&rsquo;s a huge hassle I don&rsquo;t want to go through if I don&rsquo;t have to.</p>
+<p>One last thing: Radeon 6700 XT launch on Thursday. It&rsquo;s way out of my price range, but perhaps it could be the beginning of better stock availability? Who knows. A Bitcoin or Ethereum crash could do the trick, too.</p>
+<p>So that kind of rules out the option of buying a GPU right now.</p>
+<p>But&mldr; I only need it for one or two hours, to update and set up the BIOS. What about borrowing a GPU?</p>
+<p>Although promising, this only led to a dead end. My laptop&rsquo;s (discrete) GPU doesn&rsquo;t have an output port since it&rsquo;s part of a hybrid graphics system, so that won&rsquo;t do (among other possible problems, of course). The old Dell Dimension 4100 rotting in the basement has an ATI Rage 128 from 1999, with a <em>stunning</em> 32 MB of RAM clocked at 250 MHz, but it has the wrong connecter, AGP, instead of the current PCI-e. My friend has a desktop, but with&mldr; integrated graphics. I asked a few other people, but none of them had GPUs they could loan me.</p>
+<p>It looks like my only options now are: asking more people to borrow their GPU, buy an extremely overpriced GPU and possibly sell it, or just wait. That last one doesn&rsquo;t look to fun, but it might just be the best option here.</p>
+<p>It&rsquo;s quite frustrating that the only obstacle in the way of finishing my build is a GPU for an hour. I guess I now have a $666 mega paperweight sitting in my living room. Perfect!</p>
+<p><img src=/images/build2.jpg alt="Another low-quality image of the build"></p>
+</p>
+</div>
+</div>
+</main><footer class=footer>
+<span>Made with ❤️ by Ta180m - CC BY-SA 4.0</span>
+</footer>
+</body>
+</html>

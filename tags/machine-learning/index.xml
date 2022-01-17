@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Machine learning on Some Random Website</title><link>https://ta180m.github.io/tags/machine-learning/</link><description>Recent content in Machine learning on Some Random Website</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sat, 17 Jul 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://ta180m.github.io/tags/machine-learning/index.xml" rel="self" type="application/rss+xml"/><item><title>An Interview with GitHub Copilot</title><link>https://ta180m.github.io/posts/interview-github-copilot/</link><pubDate>Sat, 17 Jul 2021 00:00:00 +0000</pubDate><guid>https://ta180m.github.io/posts/interview-github-copilot/</guid><description>Originally posted on my old blog
+The hype is real!
+Not only can Copilot write code, it can also talk with you in a text file. Unfortunately, it doesn&amp;rsquo;t seem to work with the open source build of Visual Studio Code, so I hopped into my Ubuntu VM and installed the proprietary VSCode build. Anyways, Copilot said some pretty&amp;hellip; questionable things&amp;hellip;
+ME: Hello GitHub Copilot!
+AI: Hello!
+ME: How are you?</description></item></channel></rss>
