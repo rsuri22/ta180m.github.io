@@ -115,10 +115,10 @@ January 26, 2022
 <p>First things first, let&rsquo;s generate a list of <a href=https://archlinux.org/packages/>all official Arch Linux packages</a>. Fortunately, <code>pacman</code>, the best pragmatic package manager in existence, makes this a breeze.</p>
 <div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>pacman -Sql
 </code></pre></div><p>Great, now let&rsquo;s install it all!</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>pacman -Sql | xargs sudo pacman -S
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>sudo pacman -S <span style=color:#66d9ef>$(</span>pacman -Sql<span style=color:#66d9ef>)</span>
 </code></pre></div><p>10 seconds later, you&rsquo;ll find yourself with&mldr; unresolvable package conflicts detected?</p>
 <p>OK, fine, let&rsquo;s disable dependency checking then:</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>pacman -Sql | xargs sudo pacman -Sdd
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>sudo pacman -Sdd <span style=color:#66d9ef>$(</span>pacman -Sql<span style=color:#66d9ef>)</span>
 </code></pre></div><p>Nope, didn&rsquo;t work. We have to do something about the conflicting packages!</p>
 <p>We could resolve all the conflicts manually with an hour of work&mldr; or we could write a program!</p>
 <p><img src=https://imgs.xkcd.com/comics/automation.png alt=Automation></p>
@@ -230,10 +230,9 @@ used <span style=color:#f92672>=</span> <span style=color:#66d9ef>BitSet</span>(
 		println(f, pkgname[i])
 	<span style=color:#66d9ef>end</span>
 <span style=color:#66d9ef>end</span>
-</code></pre></div><p>Alright, time to install everything! This takes about 60 minutes depending on your internet connection. Make sure you have the <code>multilib</code> repository enabled, and you may manually need to install <code>iptables-nft</code> before running this command.</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>cat out | xargs sudo pacman -Sdd --noconfirm
-</code></pre></div><p>At the time of this writing, I&rsquo;m not done installing everything quite yet, but I&rsquo;ll update this post when I&rsquo;m done.</p>
-<p>Update: I got an error!</p>
+</code></pre></div><p>Alright, time to install everything! It&rsquo;ll take about 30 minutes for everything to download, depending on your internet connection. Make sure you have the <code>multilib</code> repository enabled.</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>sudo pacman -Sdd <span style=color:#66d9ef>$(</span>cat out<span style=color:#66d9ef>)</span>
+</code></pre></div><p>After everything finishes downloading, we get more errors?</p>
 <pre tabindex=0><code>error: failed to commit transaction (conflicting files)
 /usr/lib/python3.10/site-packages/tests/__init__.py exists in both 'python-pybtex' and 'python-wiktionaryparser'
 /usr/lib/python3.10/site-packages/tests/__pycache__/__init__.cpython-310.opt-1.pyc exists in both 'python-pybtex' and 'python-wiktionaryparser'
@@ -243,7 +242,10 @@ used <span style=color:#f92672>=</span> <span style=color:#66d9ef>BitSet</span>(
 /usr/lib/SoapySDR/modules0.8/libairspySupport.so exists in both 'soapyairspy' and 'soapyosmo'
 /usr/share/tessdata/osd.traineddata exists in both 'tesseract' and 'tesseract-data-osd'
 Errors occurred, no packages were upgraded.
-</code></pre><p>I&rsquo;ll fix it later. Stay tuned.</p>
+</code></pre><p>There are some <a href=https://bugs.archlinux.org/task/73574>open bugs</a> to fix these conflicts, but in the meantime, we&rsquo;ll just manually remove <code>python-wiktionaryparser</code>, <code>mvt</code>, <code>sl</code>, <code>singularity</code>, <code>tesseract-data-osd</code>, <code>kea-docs</code>, <code>lrzsz</code>, from our list of packages to install.</p>
+<p>Let&rsquo;s rerun the command above, and hope for the best this time!</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>sudo pacman -Sdd <span style=color:#66d9ef>$(</span>cat out<span style=color:#66d9ef>)</span>
+</code></pre></div><p>Alright, I&rsquo;m still waiting on this command to finish. Check back later!</p>
 </p>
 </div>
 </div>
