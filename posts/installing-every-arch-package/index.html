@@ -232,20 +232,21 @@ used <span style=color:#f92672>=</span> <span style=color:#66d9ef>BitSet</span>(
 <span style=color:#66d9ef>end</span>
 </code></pre></div><p>Alright, time to install everything! It&rsquo;ll take about 30 minutes for everything to download, depending on your internet connection. Make sure you have the <code>multilib</code> repository enabled.</p>
 <div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>sudo pacman -Sdd <span style=color:#66d9ef>$(</span>cat out<span style=color:#66d9ef>)</span>
-</code></pre></div><p>After everything finishes downloading, we get more errors?</p>
+</code></pre></div><p>After everything finishes downloading, we get a bunch more errors?</p>
 <pre tabindex=0><code>error: failed to commit transaction (conflicting files)
-/usr/lib/python3.10/site-packages/tests/__init__.py exists in both 'python-pybtex' and 'python-wiktionaryparser'
-/usr/lib/python3.10/site-packages/tests/__pycache__/__init__.cpython-310.opt-1.pyc exists in both 'python-pybtex' and 'python-wiktionaryparser'
-/usr/lib/python3.10/site-packages/tests/__pycache__/__init__.cpython-310.pyc exists in both 'python-pybtex' and 'python-wiktionaryparser'
-/usr/bin/sl exists in both 'python-softlayer' and 'sl'
-/usr/bin/singularity exists in both 'singularity' and 'singularity-container'
-/usr/lib/SoapySDR/modules0.8/libairspySupport.so exists in both 'soapyairspy' and 'soapyosmo'
-/usr/share/tessdata/osd.traineddata exists in both 'tesseract' and 'tesseract-data-osd'
 Errors occurred, no packages were upgraded.
-</code></pre><p>There are some <a href=https://bugs.archlinux.org/task/73574>open bugs</a> to fix these conflicts, but in the meantime, we&rsquo;ll just manually remove <code>python-wiktionaryparser</code>, <code>mvt</code>, <code>sl</code>, <code>singularity</code>, <code>tesseract-data-osd</code>, <code>kea-docs</code>, <code>lrzsz</code>, from our list of packages to install.</p>
-<p>Let&rsquo;s rerun the command above, and hope for the best this time!</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>sudo pacman -Sdd <span style=color:#66d9ef>$(</span>cat out<span style=color:#66d9ef>)</span>
-</code></pre></div><p>Alright, I&rsquo;m still waiting on this command to finish. Check back later!</p>
+</code></pre><p>Normally this isn&rsquo;t a good idea, but since we don&rsquo;t care if we end up with a broken system, let&rsquo;s tell <code>pacman</code> to ignore all conflicting files:</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>sudo pacman -Sdd <span style=color:#66d9ef>$(</span>cat out<span style=color:#66d9ef>)</span> --overwrite <span style=color:#e6db74>&#39;*&#39;</span>
+</code></pre></div><p>What? Yet another error?</p>
+<pre tabindex=0><code>(12232/12232) checking for file conflicts                          [####################################] 100%
+(12232/12232) checking available disk space                        [####################################] 100%
+error: Partition / too full: 44153437 blocks needed, 32623558 blocks free
+error: not enough free disk space
+error: failed to commit transaction (not enough free disk space)
+Errors occurred, no packages were upgraded.
+</code></pre><p>I don&rsquo;t have enough disk space? NOOOOOOOO!!!!!</p>
+<p>Oh well, I guess I&rsquo;ll delete the testing VM and try again and redownload <em>everything</em>. This is going to take a while.</p>
+<p>Stay tuned.</p>
 </p>
 </div>
 </div>
