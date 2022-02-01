@@ -263,7 +263,7 @@ sudo rm $(ls -S | head -n 100)
 </code></pre></div><p>Success! Now, time for yet another 30 minute wait, and even better, there&rsquo;s <em>52</em> <code>pacman</code> hooks at the end. Yeah, we&rsquo;ll just have to wait as every DKMS module is compiled for each of the four kernels we have installed.</p>
 <h2 id=exploring-the-system>Exploring the system</h2>
 <p>Alright, let&rsquo;s reboot and check out our new and improved Arch Linux system!</p>
-<p>The first obstacle that we encounter is that most display managers, with the exception of <a href=https://wiki.archlinux.org/title/LXDM>LXDM</a>, don&rsquo;t have a scrollbar for selecting the desktop session (Because when would you ever have that many sessions installed?)/ So, let&rsquo;s <code>sudo systemctl start lxdm</code> and choose one of the 44 desktop sessions to explore.</p>
+<p>The first obstacle that we encounter is that most display managers, with the exception of <a href=https://wiki.archlinux.org/title/LXDM>LXDM</a>, don&rsquo;t have a scrollbar for selecting the desktop session (Because when would you ever have that many sessions installed?). So, let&rsquo;s <code>sudo systemctl start lxdm</code> and choose one of the 44 desktop sessions to explore.</p>
 <p><img src=/images/bloated-lxdm.png alt="A very bloated LXDM"></p>
 <p>Surprisingly, KDE Plasma starts up pretty snappily, but 10 different background services also popped up in the system tray. Memory usage is pretty high, but what can you expect? We also have over 30 different terminals to choose from for our <code>neofetch</code> screenshot.</p>
 <p><img src=/images/bloated-kde.png alt="A very bloated KDE"></p>
