@@ -264,11 +264,11 @@ sudo rm $(ls -S | head -n 100)
 <h2 id=exploring-the-system>Exploring the system</h2>
 <p>Alright, let&rsquo;s reboot and check out our new and improved Arch Linux system!</p>
 <p>The first obstacle that we encounter is that most display managers, with the exception of <a href=https://wiki.archlinux.org/title/LXDM>LXDM</a>, don&rsquo;t have a scrollbar for selecting the desktop session (Because when would you ever have that many sessions installed?). So, let&rsquo;s <code>sudo systemctl start lxdm</code> and choose one of the 44 desktop sessions to explore.</p>
-<p><img src=/images/bloated-lxdm.png alt="A very bloated LXDM"></p>
+<p><img src=/images/bloated-lxdm.webp alt="A very bloated LXDM"></p>
 <p>Surprisingly, KDE Plasma starts up pretty snappily, but 10 different background services also popped up in the system tray. Memory usage is pretty high, but what can you expect? We also have over 30 different terminals to choose from for our <code>neofetch</code> screenshot.</p>
-<p><img src=/images/bloated-kde.png alt="A very bloated KDE"></p>
+<p><img src=/images/bloated-kde.webp alt="A very bloated KDE"></p>
 <p>Now let&rsquo;s have some real fun with this system:</p>
-<p><img src=/images/all-apps.png alt="All apps"></p>
+<p><img src=/images/all-apps.webp alt="All apps"></p>
 <p>Endless fun!</p>
 <h2 id=so-is-this-system-usable>So is this system usable?</h2>
 <p>Surprisingly, yes! It&rsquo;s hard to judge how bad the performance really is, since it&rsquo;s in a virtual machine, but all the software that I tested was definitely usable. It&rsquo;s somewhat slow, but that&rsquo;s exactly what you&rsquo;d expect. As we used a lot of unsafe hacks (disabling dependency and file conflict checking, for instance) to get this to actually work, I wouldn&rsquo;t recommend using this system for anything other than proving it&rsquo;s possible.</p>
