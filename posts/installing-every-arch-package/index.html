@@ -123,16 +123,16 @@ January 26, 2022
 <p>We could resolve all the conflicts manually with an hour of work&mldr; or we could write a program!</p>
 <p><img src=https://imgs.xkcd.com/comics/automation.png alt=Automation></p>
 <h2 id=time-for-some-algorithms>Time for some algorithms!</h2>
-<p>It&rsquo;s time to put our algorithms knowledge to good use. This is <em>just</em> a graph We can think of each package as a node in a graph and each conflict is an edge. Since we don&rsquo;t care about dependency checks (which would make for a likely broken system), we don&rsquo;t need to add any other edges to the graph.</p>
+<p>It&rsquo;s time to put our algorithms knowledge to good use. This is <em>just</em> a graph We can think of each package as a node in a graph and each conflict is an edge. Since we don&rsquo;t care about dependency checks (which would make for a likely broken system but who cares), we don&rsquo;t need to add any other edges to the graph.</p>
 <p>For each edge, we need to pick at most one package, but not both. That sounds a lot like a <a href=https://en.wikipedia.org/wiki/Maximum_independent_set>maximum independent set</a>!</p>
 <p>Wait&mldr; it&rsquo;s NP hard though? And we have up to 12000 nodes, so we&rsquo;ll never be able to find the answer before the heat death of the universe, right?</p>
-<p>Well, do we have 12000 <em>connected</em> nodes? No, since the largest connected component is probably only a few nodes. We aren&rsquo;t going to have hundreds or thousands of packages all conflicting with each other. Therefore, we don&rsquo;t need to solve <a href=https://en.wikipedia.org/wiki/P_versus_NP_problem>P vs. NP</a> to be able to find the maximum independent set of this particular graph. Phew!</p>
+<p>Well, do we have 12000 <em>connected</em> nodes? No, since the largest connected component is probably only a few nodes. We aren&rsquo;t going to have hundreds or thousands of packages all conflicting with each other. Therefore, we don&rsquo;t need to prove <a href=https://en.wikipedia.org/wiki/P_versus_NP_problem>P = NP</a> to be able to find the maximum independent set of this particular graph. Phew!</p>
 <h2 id=implementing-this-in-julia>Implementing this in Julia</h2>
-<p>We&rsquo;re going to use <a href=https://julialang.org/>Julia</a> for implementing this algorithm, since Julia is Python but better. We first need to get a list of all packages:</p>
+<p>We&rsquo;re going to use <a href=https://julialang.org/>Julia</a> for implementing this algorithm, because Julia is Python but better. We first need to get a list of all packages:</p>
 <div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-jl data-lang=jl>pkgname <span style=color:#f92672>=</span> split(read(<span style=color:#e6db74>`pacman -Sql`</span>, <span style=color:#66d9ef>String</span>))
 
 N <span style=color:#f92672>=</span> length(pkgname)
-</code></pre></div><p>Now, we&rsquo;ll get info about each package, using multithreading to speed things up:</p>
+</code></pre></div><p>Now, we&rsquo;ll get info about each package, using multithreading to speed things up: (this is the slowest part of the program, actually)</p>
 <div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-jl data-lang=jl><span style=color:#66d9ef>struct</span> <span style=color:#66d9ef>Package</span>
     provides<span style=color:#f92672>::</span><span style=color:#66d9ef>Vector</span>{<span style=color:#66d9ef>String</span>}
     conflicts<span style=color:#f92672>::</span><span style=color:#66d9ef>Vector</span>{<span style=color:#66d9ef>String</span>}
@@ -174,7 +174,7 @@ Threads<span style=color:#f92672>.</span><span style=color:#a6e22e>@threads</spa
 		<span style=color:#66d9ef>end</span>
 	<span style=color:#66d9ef>end</span>
 <span style=color:#66d9ef>end</span>
-</code></pre></div><p>Now we can find each connected component using <a href=https://en.wikipedia.org/wiki/Breadth-first_search>BFS</a>, and brute-force the maximum independent set by trying every subset of the nodes in that component. It&rsquo;s implemented here using some bit manipulation trickery.</p>
+</code></pre></div><p>Now we can find each connected component using <a href=https://en.wikipedia.org/wiki/Breadth-first_search>BFS</a>, and brute-force the maximum independent set by trying every subset of the nodes in that component. It&rsquo;s implemented here using some bit manipulation trickery. Since the components are all very small, the brute-force finishes really quickly!</p>
 <div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-jl data-lang=jl>ans <span style=color:#f92672>=</span> <span style=color:#66d9ef>BitSet</span>(<span style=color:#ae81ff>1</span><span style=color:#f92672>:</span>N)
 
 used <span style=color:#f92672>=</span> <span style=color:#66d9ef>BitSet</span>()
@@ -230,7 +230,8 @@ used <span style=color:#f92672>=</span> <span style=color:#66d9ef>BitSet</span>(
 		println(f, pkgname[i])
 	<span style=color:#66d9ef>end</span>
 <span style=color:#66d9ef>end</span>
-</code></pre></div><p>Alright, time to install everything! It&rsquo;ll take about 30 minutes for everything to download, depending on your internet connection. Make sure you have the <code>multilib</code> repository enabled. We can also speed this up by disabling package signature checking.</p>
+</code></pre></div><h2 id=installing-everything>Installing everything</h2>
+<p>Alright, time to install everything! It&rsquo;ll take about 30 minutes for everything to download, depending on your internet connection. Make sure you have the <code>multilib</code> repository enabled. We can also speed this up by disabling package signature checking.</p>
 <div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>sudo pacman -Sdd <span style=color:#66d9ef>$(</span>cat out<span style=color:#66d9ef>)</span>
 </code></pre></div><p>After everything finishes downloading, we get a bunch more errors?</p>
 <pre tabindex=0><code>error: failed to commit transaction (conflicting files)
@@ -259,7 +260,37 @@ sudo pacman -Udd $(ls -S | head -n 100)
 sudo rm $(ls -S | head -n 100)
 </code></pre><p>Now let&rsquo;s try again:</p>
 <div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>sudo pacman -Sdd <span style=color:#66d9ef>$(</span>cat out<span style=color:#66d9ef>)</span> --overwrite <span style=color:#e6db74>&#39;*&#39;</span> --needed
-</code></pre></div><p>Success! This command takes forever to run too, and there&rsquo;s <em>52</em> <code>pacman</code> hooks at the end.</p>
+</code></pre></div><p>Success! Now, time for yet another 30 minute wait, and even better, there&rsquo;s <em>52</em> <code>pacman</code> hooks at the end. Yeah, we&rsquo;ll just have to wait as every DKMS module is compiled for each of the four kernels we have installed.</p>
+<h2 id=exploring-the-system>Exploring the system</h2>
+<p>Alright, let&rsquo;s reboot and check out our new and improved Arch Linux system!</p>
+<p>The first obstacle that we encounter is that most display managers, with the exception of <a href=https://wiki.archlinux.org/title/LXDM>LXDM</a>. So, let&rsquo;s <code>sudo systemctl start lxdm</code> and choose one of the 44 desktop sessions to explore.</p>
+<p><img src=/images/bloated-lxdm.png alt="A very bloated LXDM"></p>
+<p>Surprisingly, KDE Plasma starts up pretty snappily, but 10 different background services also popped up in the system tray. Memory usage is pretty high, but what can you expect? We also have over 30 different terminals to choose from for our <code>neofetch</code> screenshot.</p>
+<p><img src=/images/bloated-kde.png alt="A very bloated KDE"></p>
+<p>Now let&rsquo;s have some real fun with this system:</p>
+<p><img src=/images/all-apps.png alt="All apps"></p>
+<p>Endless fun!</p>
+<h1 id=so-is-this-system-usable>So is this system usable?</h1>
+<p>Surprisingly, yes! It&rsquo;s hard to judge how bad the performance really is, since it&rsquo;s in a virtual machine, but all the software that I tested was definitely usable. It&rsquo;s somewhat slow, but that&rsquo;s exactly what you&rsquo;d expect. As we used a lot of unsafe hacks (disabling dependency and file conflict checking, for instance) to get this to actually work, I wouldn&rsquo;t recommend using this system for anything other than proving it&rsquo;s possible.</p>
+<p>Now is this useful? The short answer is no. The long answer is also no. I can think of exactly zero uses of this experiment (and I must be pretty crazy for doing it).</p>
+<h1 id=i-want-to-try-this-out>I want to try this out!</h1>
+<p>Uh, don&rsquo;t do it, but if you insist, you need a fresh new Arch Linux system, 250 GB of free disk space, Julia, a boatload of patience, and a healthy dose of insanity. You can download the Julia code as a <a href=/src/solveconflicts.jl>Pluto notebook</a> and run it with <code>julia --threads=auto solveconflicts.jl</code>. I&rsquo;d recommend doing the actual installation (<code>sudo pacman -Sdd $(cat out) --overwrite '*' --needed</code>) in a VM since this completely destroys an Arch Linux system, and there&rsquo;s no going back once you finish.</p>
+<p>And before you start, please ask yourself three times, why am I doing this???</p>
+<h2 id=further-potential-explorations>Further potential explorations</h2>
+<ul>
+<li>
+<p>Install every package of a different distro? In particular, I&rsquo;d like to see someone do this for Ubuntu, Debian, and NixOS and watch them suffer. This was painful enough.</p>
+</li>
+<li>
+<p>Investigate the file conflicts and file some Arch Linux <a href=https://bugs.archlinux.org/task/73574>bugs</a>.</p>
+</li>
+<li>
+<p>Figure out how to make <code>pacman</code> skip all package conflict checks, possibly by editing the <code>pacman</code> source code and disabling the relevant code that does these checks, so we can <em>really</em> install every single Arch package.</p>
+</li>
+<li>
+<p>Build a time machine so I can get back the 10 hours that I wasted by doing this project. (I also destroyed 6 testing VMs) Oh well. Now we know what really happens when you install all Arch Linux packages!</p>
+</li>
+</ul>
 </p>
 </div>
 </div>
